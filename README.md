@@ -48,4 +48,13 @@ The final ontology pairs for the track are still being consolidated from the cur
 ## Related Material
 
 - [Ontology Alignment Evaluation Initiative](https://oaei.ontologymatching.org/)
+- [DISO: Defence, Intelligence and Security Ontologies](https://github.com/city-artificial-intelligence/diso)
 - The accompanying resource paper and related publications will be linked here when public.
+
+## Oragnisers
+
+[Ernesto Jimenez-Ruiz](https://ernestojimenezruiz.github.io/), [Pedro Cotovio](https://pedrocotovio.github.io/), [Jon Dilworth](https://github.com/jonathondilworth) and [Dave Herron](https://djherron.github.io/).
+
+## Acknowledgements
+
+This research was supported by Turing Innovations Limited and [The Alan Turing Institute's Defence and Security Programme](https://www.turing.ac.uk/science-innovation/defence-and-national-security) via the project [GUARD](https://ernestojimenezruiz.github.io/projects/guard/).
