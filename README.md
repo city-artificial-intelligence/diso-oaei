@@ -1,6 +1,6 @@
 # DISO OAEI Track
 
-This page introduces an emerging OAEI track grounded in the Defence, Intelligence and Security Ontologies (DISO) collection: a network of publicly available ontologies spanning defence, intelligence, national security, and closely related subdomains. The current focus is to define a strong first set of alignment tasks and publish the supporting material in a form that is easy to browse, cite, and reuse.
+This page introduces an emerging OAEI track grounded in the [Defence, Intelligence and Security Ontologies (DISO) collection](https://github.com/city-artificial-intelligence/diso): a network of publicly available ontologies spanning defence, intelligence, national security, and closely related subdomains. The current focus is to define a strong first set of alignment tasks and publish the supporting material in a form that is easy to browse, cite, and reuse.
 
 > **Status:** This is a draft track page based on the ontology set identified so far. The final track definition, selected ontology pairs, datasets, and reference alignments are still being consolidated.
 
