@@ -1,0 +1,211 @@
+---
+/**
+ * Draft hero animation, variant 2 — "Correspondence traffic".
+ * The actual DISO-OAEI network — the ten labelled ontologies in the live
+ * hero's layout — but alive: the eight evaluation-pair edges become lifted
+ * arcs that pulse, with correspondence signals travelling along them
+ * (solid arcs = Task 1 global alignment, dashed = Task 2 ranking). The
+ * network sways gently instead of spinning. Same accessibility contract as
+ * the live hero.
+ */
+---
+
+<div class="draft-viz">
+  <div
+    id="v2-host"
+    class="draft-host"
+    role="img"
+    aria-label="The ten DISO ontologies joined by the eight evaluation pairs, with correspondence signals travelling along the pair arcs. Task 1 pairs: ThinkHome–Brick, Brick–SmartEnv, City–Brick, JC3IEDM–mIO, JC3IEDM–Brick, and JC3IEDM–Facility. Task 2 pairs: UCO–STIX and STIX–D3FEND.">
+  </div>
+  <noscript>
+    <p class="draft-fallback">
+      The ten DISO ontologies form a network joined by the eight evaluation
+      pairs, with correspondence signals travelling along the pair arcs.
+      (Enable JavaScript for the animated view.)
+    </p>
+  </noscript>
+  <div class="draft-controls">
+    <button id="v2-pause" class="draft-pause" type="button" hidden>Pause animation</button>
+  </div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  const host = document.getElementById('v2-host');
+  const pauseBtn = document.getElementById('v2-pause') as HTMLButtonElement | null;
+  if (host) {
+    try {
+      const COLORS: Record<string, number> = { cyber: 0x1a9cc9, c2: 0xb7861f, built: 0x9678f0 };
+      // Same layout as the live hero (NetworkViz), so the two are directly comparable.
+      const NODES: Array<[string, string, number, number, number]> = [
+        ['UCO', 'cyber', -2.3, 1.4, 0.3],
+        ['STIX', 'cyber', -1.1, 2.0, -0.4],
+        ['D3FEND', 'cyber', 0.1, 2.6, 0.5],
+        ['JC3IEDM', 'c2', 1.5, 1.1, 0.2],
+        ['mIO', 'c2', 2.7, 1.7, -0.5],
+        ['Brick', 'built', 0, -0.3, 0],
+        ['ThinkHome', 'built', -1.7, -1.0, 0.6],
+        ['SmartEnv', 'built', -0.4, -1.8, -0.8],
+        ['CityOWL', 'built', 1.2, -1.6, 0.7],
+        ['Facility', 'built', 2.2, -0.5, -0.6],
+      ];
+      const GLOBAL_EDGES = [
+        ['ThinkHome', 'Brick'], ['Brick', 'SmartEnv'], ['CityOWL', 'Brick'],
+        ['JC3IEDM', 'mIO'], ['JC3IEDM', 'Brick'], ['JC3IEDM', 'Facility'],
+      ];
+      const RANKING_EDGES = [['UCO', 'STIX'], ['STIX', 'D3FEND']];
+      const degree: Record<string, number> = {};
+      [...GLOBAL_EDGES, ...RANKING_EDGES].flat().forEach((n) => { degree[n] = (degree[n] ?? 0) + 1; });
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(0, 0.4, 8.2);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      host.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 1.35));
+      const key = new THREE.DirectionalLight(0xffffff, 1.6);
+      key.position.set(4, 6, 8);
+      scene.add(key);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const pos: Record<string, THREE.Vector3> = {};
+      NODES.forEach(([name, dom, x, y, z]) => {
+        const p = new THREE.Vector3(x, y - 0.35, z);
+        pos[name] = p;
+        const r = 0.17 + 0.028 * (degree[name] ?? 0);
+        const mesh = new THREE.Mesh(
+          new THREE.SphereGeometry(r, 32, 32),
+          new THREE.MeshStandardMaterial({
+            color: COLORS[dom], roughness: 0.35, metalness: 0.1,
+            emissive: COLORS[dom], emissiveIntensity: 0.22,
+          })
+        );
+        mesh.position.copy(p);
+        group.add(mesh);
+
+        // Billboard label (same technique as the live hero)
+        const c = document.createElement('canvas');
+        const scale = 4;
+        const ctx = c.getContext('2d')!;
+        ctx.font = `500 ${13 * scale}px Inter, system-ui, sans-serif`;
+        const w = ctx.measureText(name).width;
+        c.width = w + 8 * scale;
+        c.height = 20 * scale;
+        const ctx2 = c.getContext('2d')!;
+        ctx2.font = `500 ${13 * scale}px Inter, system-ui, sans-serif`;
+        ctx2.fillStyle = '#dbe5f1';
+        ctx2.textBaseline = 'middle';
+        ctx2.fillText(name, 4 * scale, c.height / 2);
+        const tex = new THREE.CanvasTexture(c);
+        tex.anisotropy = 4;
+        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+        const aspect = c.width / c.height;
+        sprite.scale.set(0.34 * aspect, 0.34, 1);
+        sprite.position.copy(p).add(new THREE.Vector3(0, r + 0.28, 0));
+        group.add(sprite);
+      });
+
+      // The eight pairs as lifted arcs that pulse and carry signals
+      type Bridge = {
+        curve: THREE.QuadraticBezierCurve3;
+        mat: THREE.LineBasicMaterial | THREE.LineDashedMaterial;
+        phase: number;
+        dashed: boolean;
+      };
+      const bridges: Bridge[] = [];
+      const addArc = (a: string, b: string, dashed: boolean, k: number) => {
+        const mid = pos[a].clone().add(pos[b]).multiplyScalar(0.5)
+          .add(new THREE.Vector3(0, 0.45, 0.3));
+        const curve = new THREE.QuadraticBezierCurve3(pos[a], mid, pos[b]);
+        const mat = dashed
+          ? new THREE.LineDashedMaterial({ color: 0x9fb6cd, dashSize: 0.14, gapSize: 0.1, transparent: true, opacity: 0.85 })
+          : new THREE.LineBasicMaterial({ color: 0x7e97b1, transparent: true, opacity: 0.6 });
+        const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(40)), mat);
+        if (dashed) line.computeLineDistances();
+        group.add(line);
+        bridges.push({ curve, mat, phase: (k / 8) * Math.PI * 2, dashed });
+      };
+      GLOBAL_EDGES.forEach(([a, b], k) => addArc(a, b, false, k));
+      RANKING_EDGES.forEach(([a, b], k) => addArc(a, b, true, k + 6));
+
+      // One correspondence signal per arc; Task 2 signals in gold
+      const signals = bridges.map((b) => {
+        const s = new THREE.Mesh(
+          new THREE.SphereGeometry(0.05, 12, 12),
+          new THREE.MeshBasicMaterial({ color: b.dashed ? 0xd9b25f : 0xe8f4fa })
+        );
+        s.position.copy(b.curve.getPoint(0));
+        group.add(s);
+        return s;
+      });
+
+      group.rotation.x = 0.12;
+
+      const size = () => {
+        const w = host.clientWidth || 480;
+        const h = Math.max(280, Math.min(400, w * 0.7));
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.render(scene, camera);
+      };
+
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let playing = !reduced;
+      let t = 1.6; // static pose: signals mid-flight, arcs at mixed brightness
+
+      const paint = () => {
+        bridges.forEach((b, k) => {
+          b.mat.opacity = (b.dashed ? 0.55 : 0.4) + 0.3 * (0.5 + 0.5 * Math.sin(t * 1.4 + b.phase));
+          const u = (t * 0.13 + k / bridges.length) % 1;
+          signals[k].position.copy(b.curve.getPoint(u));
+        });
+        group.rotation.y = Math.sin(t * 0.2) * 0.32;
+      };
+
+      paint();
+      size();
+      new ResizeObserver(size).observe(host);
+
+      if (pauseBtn && !reduced) {
+        pauseBtn.hidden = false;
+        pauseBtn.addEventListener('click', () => {
+          playing = !playing;
+          pauseBtn.textContent = playing ? 'Pause animation' : 'Resume animation';
+          if (playing) tick();
+        });
+      }
+
+      let loopRunning = false;
+      const step = () => {
+        if (playing) {
+          t += 1 / 60;
+          paint();
+          renderer.render(scene, camera);
+          requestAnimationFrame(step);
+        } else {
+          renderer.render(scene, camera);
+          loopRunning = false;
+        }
+      };
+      const tick = () => {
+        if (loopRunning) return;
+        loopRunning = true;
+        requestAnimationFrame(step);
+      };
+      if (playing) tick();
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) renderer.render(scene, camera);
+      });
+    } catch {
+      host.innerHTML =
+        '<p class="draft-fallback">The ten DISO ontologies form a network joined by the eight evaluation pairs, with correspondence signals travelling along the pair arcs. (WebGL unavailable.)</p>';
+    }
+  }
+</script>

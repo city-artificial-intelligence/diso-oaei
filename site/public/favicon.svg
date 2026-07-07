@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- DISO-OAEI mark: the OAEI diamond motif recut for DISO. Self-themes with
+       the system colour scheme (a favicon cannot see the site's manual theme
+       toggle, only prefers-color-scheme). -->
+  <style>
+    .fill { fill: #e0f2f7; }
+    .line { stroke: #14304d; }
+    .ink  { fill: #14304d; }
+    @media (prefers-color-scheme: dark) {
+      .fill { fill: #10333f; }
+      .line { stroke: #4fc3e8; }
+      .ink  { fill: #e7eaf1; }
+    }
+    text { font: 700 15px Georgia, 'Times New Roman', serif; }
+  </style>
+  <rect class="fill line" x="11" y="11" width="42" height="42" rx="6" transform="rotate(45 32 32)" stroke-width="2.5"/>
+  <text class="ink" x="32" y="19" text-anchor="middle" dominant-baseline="central">D</text>
+  <text class="ink" x="20" y="33" text-anchor="middle" dominant-baseline="central">I</text>
+  <text class="ink" x="44" y="33" text-anchor="middle" dominant-baseline="central">S</text>
+  <text class="ink" x="32" y="47" text-anchor="middle" dominant-baseline="central">O</text>
+</svg>

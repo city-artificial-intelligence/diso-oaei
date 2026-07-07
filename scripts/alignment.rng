@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE grammar [
+  <!-- the OAEI Alignment namespace occurs in the wild both without and with a trailing '#' -->
+  <!ENTITY align  "http://knowledgeweb.semanticweb.org/heterogeneity/alignment">
+  <!ENTITY alignh "http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+]>
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <!-- a RelaxNG schema for validating alignments in RDF (fairly tolerantly!) -->
+
+  <start>
+    <element name="rdf:RDF">
+      <zeroOrMore><attribute><anyName/></attribute></zeroOrMore>
+      <element>
+        <choice><name ns="&align;">Alignment</name><name ns="&alignh;">Alignment</name></choice>
+        <ref name="rdfNodeAttrs"/>
+        <interleave>
+          <optional><element><choice><name ns="&align;">xml</name><name ns="&alignh;">xml</name></choice><text/></element></optional>
+          <optional><element><choice><name ns="&align;">level</name><name ns="&alignh;">level</name></choice><text/></element></optional>
+          <optional><element><choice><name ns="&align;">type</name><name ns="&alignh;">type</name></choice><text/></element></optional>
+          <optional><element><choice><name ns="&align;">onto1</name><name ns="&alignh;">onto1</name></choice><ref name="ontoBody"/></element></optional>
+          <optional><element><choice><name ns="&align;">onto2</name><name ns="&alignh;">onto2</name></choice><ref name="ontoBody"/></element></optional>
+          <optional><element><choice><name ns="&align;">uri1</name><name ns="&alignh;">uri1</name></choice><text/></element></optional>
+          <optional><element><choice><name ns="&align;">uri2</name><name ns="&alignh;">uri2</name></choice><text/></element></optional>
+          <oneOrMore><ref name="mapCell"/></oneOrMore>
+        </interleave>
+      </element>
+    </element>
+  </start>
+
+  <!-- onto1/onto2 may be a plain URI (text) or a nested <Ontology rdf:about="..."/> -->
+  <define name="ontoBody">
+    <choice>
+      <text/>
+      <element>
+        <choice><name ns="&align;">Ontology</name><name ns="&alignh;">Ontology</name></choice>
+        <attribute name="rdf:about"><data type="anyURI"/></attribute>
+      </element>
+    </choice>
+  </define>
+
+  <define name="mapCell">
+    <element>
+      <choice><name ns="&align;">map</name><name ns="&alignh;">map</name></choice>
+      <element>
+        <choice><name ns="&align;">Cell</name><name ns="&alignh;">Cell</name></choice>
+        <ref name="rdfNodeAttrs"/>
+        <interleave>
+          <element>
+            <choice><name ns="&align;">entity1</name><name ns="&alignh;">entity1</name></choice>
+            <ref name="resourceIRI"/>
+          </element>
+          <element>
+            <choice><name ns="&align;">entity2</name><name ns="&alignh;">entity2</name></choice>
+            <ref name="resourceIRI"/>
+          </element>
+          <optional>
+            <element>
+              <choice><name ns="&align;">relation</name><name ns="&alignh;">relation</name></choice>
+              <text/>
+            </element>
+          </optional>
+          <optional>
+            <element>
+              <choice><name ns="&align;">measure</name><name ns="&alignh;">measure</name></choice>
+              <optional><attribute name="rdf:datatype"><text/></attribute></optional>
+              <text/>
+            </element>
+          </optional>
+        </interleave>
+        <zeroOrMore><ref name="extensionElt"/></zeroOrMore>
+      </element>
+    </element>
+  </define>
+
+  <!-- an absolute-IRI rdf:resource (the parser also accepts it unprefixed, and requires '://') -->
+  <define name="resourceIRI">
+    <attribute>
+      <choice><name ns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">resource</name><name ns="">resource</name></choice>
+      <data type="anyURI"><param name="pattern">.*://.*</param></data>
+    </attribute>
+  </define>
+
+  <!-- RDF/XML node-identity attributes some emitters put on Alignment / Cell (ignored by the parser) -->
+  <define name="rdfNodeAttrs">
+    <optional><attribute name="rdf:about"><text/></attribute></optional>
+    <optional><attribute name="rdf:nodeID"><text/></attribute></optional>
+  </define>
+
+  <!-- Alignment-format extension annotation (e.g. dc:description, melt-config:*_confidence,
+       addedInStep): a text element in any namespace OTHER than the alignment namespace -->
+  <define name="extensionElt">
+    <element>
+      <anyName>
+        <except>
+          <nsName ns="&align;"/>
+          <nsName ns="&alignh;"/>
+        </except>
+      </anyName>
+      <text/>
+    </element>
+  </define>
+
+</grammar>

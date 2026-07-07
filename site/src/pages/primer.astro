@@ -1,0 +1,296 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../config';
+---
+
+<Base
+  title="Primer: Ontology Matching"
+  description="A gentle, interactive introduction to ontology matching and the two DISO-OAEI tasks — build a small alignment, then rank candidates with NIL abstention."
+>
+  <div class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={withBase('/')}>Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Primer</span>
+      </nav>
+      <h1>A Primer on Ontology Matching</h1>
+      <p class="lead">
+        New to the field? This page explains what the track asks systems to do, then lets you
+        try both tasks by hand on toy examples.
+      </p>
+    </div>
+  </div>
+
+  <section class="section" style="border-top:none;" aria-labelledby="what-h">
+    <div class="container">
+      <div class="prose">
+        <h2 id="what-h" style="border-top:none; padding-top:0; margin-top:0;">What is an ontology?</h2>
+        <p>
+          An <strong>ontology</strong> is a formal, machine-readable vocabulary for a domain: its
+          <em>classes</em> (kinds of things, e.g. <code>TemperatureSensor</code>), its
+          <em>properties</em> (relations and attributes, e.g. <code>isLocatedIn</code>), and the
+          logical axioms connecting them. Two organisations modelling the same world almost never
+          produce the same ontology — names, granularity, and structure all differ.
+        </p>
+        <h2>What is ontology matching?</h2>
+        <p>
+          <strong>Ontology matching</strong> (or <em>alignment</em>) is the task of automatically
+          finding which entities in one ontology correspond to which entities in another. A single
+          finding is a <strong>correspondence</strong>:
+        </p>
+        <p>
+          <code>⟨ entity₁, entity₂, relation, confidence ⟩</code> — for example
+          <code>⟨ thinkhome:CoolCommand, brick:Cooling_Command, =, 1.0 ⟩</code>.
+        </p>
+        <p>
+          A set of correspondences between two ontologies is an <strong>alignment</strong>. Matching
+          systems are evaluated by comparing their alignment against a <strong>reference
+          alignment</strong> curated by experts. DISO-OAEI's references are <em>partial but locally
+          complete</em> "silver standards": for every entity they mention, they list all of that
+          entity's correct correspondences — but they are silent about unmentioned entities. The
+          scoring accounts for this (that's the "partiality-corrected" in our metrics: predictions
+          the reference cannot adjudicate don't count against you).
+        </p>
+      </div>
+
+      <div class="demo" id="matching-demo">
+        <h3>Try it — Task 1 in miniature</h3>
+        <p class="hint">
+          Two toy ontologies. Select one entity on each side to propose a correspondence, then watch
+          precision, recall and F1 respond. The hidden reference covers only the
+          <em>sensor / heating / window</em> entities — <code>Room ↔ Space</code> is a perfectly
+          good mapping the silver simply doesn't mention, so proposing it neither helps nor hurts.
+          That is partiality correction at work.
+        </p>
+        <noscript><p class="hint"><strong>The interactive demo needs JavaScript.</strong> A worked example: proposing TemperatureSensor↔Temperature_Sensor and Heater↔Lighting_System gives Â = 2 judgeable proposals, 1 correct: P = 1/2 = 0.50, R = 1/3 ≈ 0.33, F1 = 0.40.</p></noscript>
+        <div class="demo-cols">
+          <div class="entity-list" id="md-left">
+            <span class="col-label">HomeOnt (source)</span>
+          </div>
+          <div class="entity-list" id="md-right">
+            <span class="col-label">BuildOnt (target)</span>
+          </div>
+        </div>
+        <ul class="match-list" id="md-matches" aria-label="Your proposed correspondences"></ul>
+        <div class="score-chips" id="md-score" aria-live="polite"></div>
+      </div>
+
+      <div class="prose">
+        <h2>When there is no right answer: ranking with NIL</h2>
+        <p>
+          Task 2 flips the problem around. Instead of generating an alignment, a system receives,
+          for each <em>query</em> (a source entity), a fixed pool of 50 candidate targets and must
+          order the pool <strong>best-first</strong>. One special candidate — <strong>NIL</strong> —
+          means <em>"no equivalent exists."</em> Ranking NIL first is how a system abstains.
+          Scoring simply asks: <em>where in your ranking did the right answer land?</em>
+          Hits&#64;k is the fraction of queries whose right answer is in the top k;
+          MRR averages 1/rank.
+        </p>
+      </div>
+
+      <div class="demo" id="ranking-demo">
+        <h3>Try it — Task 2 in miniature</h3>
+        <p class="hint">
+          Reorder the candidate pool with the arrow buttons. The gold answer is tagged so you can
+          see exactly how the metrics respond to its position. Toggle the query type to see how
+          abstention (NIL-first) is scored when no equivalent exists.
+        </p>
+        <noscript><p class="hint"><strong>The interactive demo needs JavaScript.</strong> A worked example: if the gold target sits at rank 2 of 6, it contributes Hits@1 = 0, Hits@3 = Hits@5 = 1, and reciprocal rank 1/2 = 0.5.</p></noscript>
+        <p style="font-size:0.92rem;">
+          Query: <code>uco:Identity</code> <span class="badge">CLS</span>
+          <label style="margin-left:1rem; font-size:0.88rem;">
+            <input type="checkbox" id="rd-nil-mode" />
+            make this a NIL query (no equivalent exists)
+          </label>
+        </p>
+        <ol class="rank-list" id="rd-list" aria-label="Your ranking, best first"></ol>
+        <div class="score-chips" id="rd-score" aria-live="polite"></div>
+      </div>
+
+      <div class="prose">
+        <h2>Where to go next</h2>
+        <ul>
+          <li><a href={withBase('/quickstart/')}>Quickstart</a> — download the data and validate a submission in minutes.</li>
+          <li><a href={withBase('/tasks/global/')}>Task 1 — Global alignment</a> and its <a href={withBase('/tasks/global/submission-format/')}>submission format</a>.</li>
+          <li><a href={withBase('/tasks/ranking/')}>Task 2 — Equivalence ranking</a> and its <a href={withBase('/tasks/ranking/submission-format/')}>submission format</a>.</li>
+          <li><a href={withBase('/evaluation/')}>Evaluation metrics</a> — the formal definitions.</li>
+          <li><a href="https://oaei.ontologymatching.org/">The OAEI</a> — the wider evaluation initiative this track belongs to.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // ---------- Demo 1: partial-reference alignment scoring ----------
+  {
+    const LEFT = ['Room', 'TemperatureSensor', 'Heater', 'WindowContact', 'EnergyMeter'];
+    const RIGHT = ['Space', 'Temperature_Sensor', 'HVAC_Heating_System', 'Window_Status_Sensor', 'Lighting_System'];
+    const REF = new Set([
+      'TemperatureSensor|Temperature_Sensor',
+      'Heater|HVAC_Heating_System',
+      'WindowContact|Window_Status_Sensor',
+    ]);
+    const COVERED_L = new Set(['TemperatureSensor', 'Heater', 'WindowContact']);
+    const COVERED_R = new Set(['Temperature_Sensor', 'HVAC_Heating_System', 'Window_Status_Sensor']);
+
+    const leftBox = document.getElementById('md-left');
+    const rightBox = document.getElementById('md-right');
+    const matchUl = document.getElementById('md-matches');
+    const scoreBox = document.getElementById('md-score');
+    if (leftBox && rightBox && matchUl && scoreBox) {
+      let selL: string | null = null;
+      let selR: string | null = null;
+      const proposals: Array<[string, string]> = [];
+
+      const mkBtn = (name: string, side: 'l' | 'r') => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'entity';
+        b.textContent = name;
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', () => {
+          if (side === 'l') selL = selL === name ? null : name;
+          else selR = selR === name ? null : name;
+          if (selL && selR) {
+            if (!proposals.some(([a, c]) => a === selL && c === selR)) proposals.push([selL, selR]);
+            selL = null;
+            selR = null;
+          }
+          renderAll();
+        });
+        return b;
+      };
+      LEFT.forEach((n) => leftBox.append(mkBtn(n, 'l')));
+      RIGHT.forEach((n) => rightBox.append(mkBtn(n, 'r')));
+
+      const renderAll = () => {
+        leftBox.querySelectorAll('.entity').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.textContent === selL));
+          b.classList.toggle('matched', proposals.some(([a]) => a === b.textContent));
+        });
+        rightBox.querySelectorAll('.entity').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.textContent === selR));
+          b.classList.toggle('matched', proposals.some(([, c]) => c === b.textContent));
+        });
+
+        matchUl.innerHTML = '';
+        proposals.forEach(([a, c], i) => {
+          const li = document.createElement('li');
+          const judgeable = COVERED_L.has(a) || COVERED_R.has(c);
+          const inRef = REF.has(`${a}|${c}`);
+          const verdict = !judgeable ? '○ not judgeable (uncovered)' : inRef ? '✓ agrees with reference' : '✗ contradicts reference';
+          const color = !judgeable ? 'var(--ink-3)' : inRef ? 'var(--ok)' : 'var(--warn-ink)';
+          li.innerHTML = `<code>${a}</code> <span class="arrow" aria-hidden="true">↔</span> <code>${c}</code> <span class="verdict" style="color:${color}">${verdict}</span>`;
+          const rm = document.createElement('button');
+          rm.type = 'button';
+          rm.textContent = 'remove';
+          rm.setAttribute('aria-label', `Remove proposal ${a} to ${c}`);
+          rm.addEventListener('click', () => {
+            proposals.splice(i, 1);
+            renderAll();
+            // keep keyboard users in the list instead of dropping focus to <body>
+            const btns = matchUl.querySelectorAll<HTMLElement>('button');
+            const next = btns[Math.min(i, btns.length - 1)];
+            (next ?? leftBox.querySelector<HTMLElement>('.entity'))?.focus();
+          });
+          li.append(rm);
+          matchUl.append(li);
+        });
+
+        const judgeable = proposals.filter(([a, c]) => COVERED_L.has(a) || COVERED_R.has(c));
+        const correct = proposals.filter(([a, c]) => REF.has(`${a}|${c}`)).length;
+        const P = judgeable.length ? correct / judgeable.length : null;
+        const R = correct / REF.size;
+        const F1 = P !== null && P + R > 0 ? (2 * P * R) / (P + R) : null;
+        const fmt = (x: number | null) => (x === null ? '—' : x.toFixed(2));
+        scoreBox.innerHTML = `
+          <span class="chip">proposals <strong>${proposals.length}</strong></span>
+          <span class="chip">judgeable |Â| <strong>${judgeable.length}</strong></span>
+          <span class="chip">correct |A∩R| <strong>${correct}</strong></span>
+          <span class="chip">|R| <strong>${REF.size}</strong></span>
+          <span class="chip">P <strong>${fmt(P)}</strong></span>
+          <span class="chip">R <strong>${fmt(R)}</strong></span>
+          <span class="chip">F1 <strong>${fmt(F1)}</strong></span>`;
+      };
+      renderAll();
+    }
+  }
+
+  // ---------- Demo 2: ranking with NIL abstention ----------
+  {
+    const NIL = 'NIL (no equivalent)';
+    const CANDS = ['stix:Identity', 'stix:IdentityContact', 'stix:Individual', 'stix:Infrastructure', 'stix:IntrusionSet', NIL];
+    const list = document.getElementById('rd-list');
+    const scoreBox = document.getElementById('rd-score');
+    const nilToggle = document.getElementById('rd-nil-mode') as HTMLInputElement | null;
+    if (list && scoreBox && nilToggle) {
+      let order = [...CANDS];
+
+      const gold = () => (nilToggle.checked ? NIL : 'stix:Identity');
+
+      const render = (focusSpec?: { cand: string; dir: 'up' | 'down' }) => {
+        list.innerHTML = '';
+        order.forEach((c, i) => {
+          const li = document.createElement('li');
+          if (c === gold()) li.classList.add('gold');
+          if (c === NIL) li.classList.add('nil-row');
+          const iri = document.createElement('span');
+          iri.className = 'iri';
+          iri.innerHTML = c === NIL ? `<em>${c}</em>` : `<code>${c}</code>`;
+          li.append(iri);
+          if (c === gold()) {
+            const tag = document.createElement('span');
+            tag.className = 'badge badge-ok';
+            tag.textContent = 'gold';
+            li.append(tag);
+          }
+          const movers = document.createElement('span');
+          movers.className = 'movers';
+          const up = document.createElement('button');
+          up.type = 'button';
+          up.textContent = '↑';
+          up.disabled = i === 0;
+          up.setAttribute('aria-label', `Move ${c} up to rank ${i}`);
+          up.addEventListener('click', () => {
+            [order[i - 1], order[i]] = [order[i], order[i - 1]];
+            render({ cand: c, dir: 'up' });
+          });
+          const down = document.createElement('button');
+          down.type = 'button';
+          down.textContent = '↓';
+          down.disabled = i === order.length - 1;
+          down.setAttribute('aria-label', `Move ${c} down to rank ${i + 2}`);
+          down.addEventListener('click', () => {
+            [order[i + 1], order[i]] = [order[i], order[i + 1]];
+            render({ cand: c, dir: 'down' });
+          });
+          movers.append(up, down);
+          li.append(movers);
+          list.append(li);
+        });
+
+        // restore keyboard focus to the moved row's control after the re-render
+        if (focusSpec) {
+          const idx = order.indexOf(focusSpec.cand);
+          const btns = list.children[idx]?.querySelectorAll<HTMLButtonElement>('button');
+          if (btns?.length === 2) {
+            const want = focusSpec.dir === 'up' ? btns[0] : btns[1];
+            (want.disabled ? (focusSpec.dir === 'up' ? btns[1] : btns[0]) : want).focus();
+          }
+        }
+
+        const rank = order.indexOf(gold()) + 1;
+        const rr = 1 / rank;
+        const h = (k: number) => (rank <= k ? 1 : 0);
+        scoreBox.innerHTML = `
+          <span class="chip">rank(gold) <strong>${rank}</strong></span>
+          <span class="chip">RR <strong>${rr.toFixed(2)}</strong></span>
+          <span class="chip">Hits@1 <strong>${h(1)}</strong></span>
+          <span class="chip">Hits@3 <strong>${h(3)}</strong></span>
+          <span class="chip">Hits@5 <strong>${h(5)}</strong></span>`;
+      };
+      nilToggle.addEventListener('change', render);
+      render();
+    }
+  }
+</script>

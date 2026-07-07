@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="DISO-OAEI: Defence, Intelligence and Security Ontologies — an OAEI evaluation track">
+  <!-- Full DISO-OAEI logo, structured after the OAEI logo
+       (oaei.ontologymatching.org/oaeismall.jpg): a diamond with the initials
+       at the compass points and the expanded words along the four edges.
+       Self-themes with the system colour scheme. -->
+  <style>
+    .fill { fill: #e0f2f7; }
+    .line { stroke: #14304d; }
+    .ink  { fill: #14304d; }
+    .word { fill: #14304d; }
+    @media (prefers-color-scheme: dark) {
+      .fill { fill: #10333f; }
+      .line { stroke: #4fc3e8; }
+      .ink  { fill: #e7eaf1; }
+      .word { fill: #b9c0cc; }
+    }
+    .ink  { font: 700 30px Georgia, 'Times New Roman', serif; }
+    .word { font: 600 8.5px Georgia, 'Times New Roman', serif; letter-spacing: 0.04em; }
+  </style>
+
+  <rect class="fill line" x="27" y="27" width="74" height="74" rx="8" transform="rotate(45 64 64)" stroke-width="3"/>
+
+  <!-- initials at the compass points, as in the OAEI original -->
+  <text class="ink" x="64" y="42" text-anchor="middle" dominant-baseline="central">D</text>
+  <text class="ink" x="41" y="66" text-anchor="middle" dominant-baseline="central">I</text>
+  <text class="ink" x="87" y="66" text-anchor="middle" dominant-baseline="central">S</text>
+  <text class="ink" x="64" y="90" text-anchor="middle" dominant-baseline="central">O</text>
+
+  <!-- expanded words along the four outer edges -->
+  <text class="word" x="34" y="30" text-anchor="middle" transform="rotate(-45 34 30)">Defence</text>
+  <text class="word" x="94" y="30" text-anchor="middle" transform="rotate(45 94 30)">Intelligence</text>
+  <text class="word" x="34" y="98" text-anchor="middle" transform="rotate(45 34 98)">Security</text>
+  <text class="word" x="94" y="98" text-anchor="middle" transform="rotate(-45 94 98)">Ontologies</text>
+</svg>

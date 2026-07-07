@@ -1,0 +1,1190 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.commoncoreontologies.org/FacilityOntology/"
+     xml:base="https://www.commoncoreontologies.org/FacilityOntology/"
+     xmlns:cco="https://www.commoncoreontologies.org/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://www.commoncoreontologies.org/FacilityOntology">
+        <owl:versionIRI rdf:resource="https://www.commoncoreontologies.org/2024-11-06/FacilityOntology"/>
+        <dcterms:rights xml:lang="en">CUBRC Inc., see full license.</dcterms:rights>
+        <rdfs:comment xml:lang="en">This ontology is designed to represent buildings and campuses that  are designed to serve some specific purpose and which are common to multiple domains.</rdfs:comment>
+        <rdfs:label xml:lang="en">Facility Ontology</rdfs:label>
+        <owl:versionInfo xml:lang="en">Version 2.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/rights"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001753 -->
+
+    <owl:AnnotationProperty rdf:about="https://www.commoncoreontologies.org/ont00001753"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001754 -->
+
+    <owl:AnnotationProperty rdf:about="https://www.commoncoreontologies.org/ont00001754"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001760 -->
+
+    <owl:AnnotationProperty rdf:about="https://www.commoncoreontologies.org/ont00001760"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000032 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000032">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000052"/>
+        <rdfs:label xml:lang="en">Church</rdfs:label>
+        <skos:definition xml:lang="en">A Religious Facility that is designed for Christian worship and prayer.</skos:definition>
+        <cco:ont00001754>https://en.wikipedia.org/wiki/Church_(building)</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000040 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000040">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001102"/>
+        <rdfs:label xml:lang="en">Grocery Store</rdfs:label>
+        <skos:definition xml:lang="en">A Commercial Facility that is designed to sell food.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Grocery_store&amp;oldid=1060022873</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000041 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000041">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000410"/>
+        <rdfs:label xml:lang="en">Hostel</rdfs:label>
+        <skos:definition xml:lang="en">A Residential Facility that is designed to temporarily lodge guests in a sociable environment for relatively low costs.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Hostel&amp;oldid=1057812930</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000045 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000045">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Petroleum Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store petroleum, oil, or lubricants.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000052 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000052">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Religious Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for worship and prayer.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Religion&amp;oldid=1063431202</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000055 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000055">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Healthcare Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for the diagnosis, treatment, and prevention of disease.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Medicine&amp;oldid=1062226814</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000060 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000060">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000639"/>
+        <rdfs:label xml:lang="en">Open Pit Mine</rdfs:label>
+        <skos:definition xml:lang="en">A Mine that is designed to support the extraction of materials from the ground directly without using tunnels.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Open-pit_mining&amp;oldid=1059271938</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000094 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000094">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000946"/>
+        <rdfs:label xml:lang="en">Seat of National Government</rdfs:label>
+        <skos:definition xml:lang="en">A Government Building that is designed for the administration of a sovereign nation.</skos:definition>
+        <skos:example>Parliament of Canada</skos:example>
+        <skos:example>United States Capitol</skos:example>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Seat_of_government&amp;oldid=1063047501</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000104 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000104">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000639"/>
+        <rdfs:label xml:lang="en">Underwater Mine</rdfs:label>
+        <skos:definition xml:lang="en">A Mine that is designed to support the extraction of materials from the ocean floor.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Naval_mine&amp;oldid=1062538523</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000108 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000108">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000226"/>
+        <rdfs:label xml:lang="en">Rail Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Transportation Facility that is designed for transferring people or cargo to and from Trains.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Train_station&amp;oldid=1063922802</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000172 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000172">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000483"/>
+        <rdfs:label xml:lang="en">Base of Operations</rdfs:label>
+        <skos:altLabel xml:lang="en">Main Operating Base</skos:altLabel>
+        <skos:definition xml:lang="en">A Military Base with permanently stationed operating forces, robust Infrastructure, and strengthened force protection measures such that it is designed to launch and support large-scale operations, support smaller or less-permanent bases, and organize supply facilities.</skos:definition>
+        <cco:ont00001753>MOB</cco:ont00001753>
+        <cco:ont00001754>http://www.jcs.mil/Portals/36/Documents/Doctrine/pubs/dictionary.pdf?ver=2018-08-27-122235-653</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000180 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000180">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000410"/>
+        <rdfs:label xml:lang="en">Hotel</rdfs:label>
+        <skos:definition xml:lang="en">A Residential Facility that is designed to provide lodging that is paid for on a short-term basis.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Hotel&amp;oldid=1063583593</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000192 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000192"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000195 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000195">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001078"/>
+        <rdfs:label xml:lang="en">Heliport</rdfs:label>
+        <skos:definition xml:lang="en">An Airport that is designed for launching, receiving, and housing Rotorcraft.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Heliport&amp;oldid=1049937701</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000220 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000220">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Ammunition Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store Portions of Ammunition.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Ammunition_dump&amp;oldid=1044466765</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000226 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000226">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Transportation Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for commencing or concluding the transportation of transportation artifacts, or for housing transportation artifacts.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Transport&amp;oldid=1063526665</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000232 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000232">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000677"/>
+        <rdfs:label xml:lang="en">Pumping Station</rdfs:label>
+        <skos:definition xml:lang="en">A Product Transport Facility that is designed to pump fluids from one place to another.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Pumping_station&amp;oldid=1045678418</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000245 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000245">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Petroleum Manufacturing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed to manufacture petroleum-based products.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Petroleum&amp;oldid=1062956217</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000248 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000248">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Chemical Manufacturing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed to manufacture or process chemicals.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Chemical_industry&amp;oldid=1061177027</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000262 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000262">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001102"/>
+        <rdfs:label xml:lang="en">Shop</rdfs:label>
+        <skos:definition xml:lang="en">A Commercial Facility designed to sell small lots of goods to consumers.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Retail&amp;oldid=1061431295</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000270 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000270">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Educational Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Education&amp;oldid=1064011752</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000271 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000271">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000639"/>
+        <rdfs:label xml:lang="en">Underground Mine</rdfs:label>
+        <skos:definition xml:lang="en">A Mine that is designed to support the extraction of materials from the ground using underground tunnels and shafts.</skos:definition>
+        <cco:ont00001754>https://en.wikipedia.org/wiki/Underground_mining_(hard_rock)</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000330 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000330">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001076"/>
+        <rdfs:label xml:lang="en">Thermal Power Plant</rdfs:label>
+        <skos:definition xml:lang="en">An Electric Power Station that is designed to convert heat energy into electrical energy.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Thermal_power_station&amp;oldid=1062208548</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000331 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000331">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000410"/>
+        <rdfs:label xml:lang="en">House</rdfs:label>
+        <skos:definition xml:lang="en">A Residential Facility that is designed to provide a self-standing, permanent residence for an individual, family, household, multiple families, or similar-sized group.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=House&amp;oldid=1062818553</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000332 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000332">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Training Camp</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for rigorous and focused training in order to learn or improve skills, usually involving physical actions.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Training_camp&amp;oldid=1059977631</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000336 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000336">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000410"/>
+        <rdfs:label xml:lang="en">Apartment Building</rdfs:label>
+        <skos:definition xml:lang="en">A Residential Facility that is designed to contain multiple permanent residences comprised of a suite of rooms.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Apartment&amp;oldid=1064019048</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000339 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000339">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Agricultural Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed as a building or campus for agricultural processes with the aim of cultivating animals, plants, or fungi for food, fiber, biofuel, medicinal plants, or other products to sustain and enhance human life.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Agriculture&amp;oldid=1063222666</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000349 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000349">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000479"/>
+        <rdfs:label xml:lang="en">Police Station</rdfs:label>
+        <skos:definition xml:lang="en">A Public Safety Facility that is designed for the professional and clerical processes of a local police force.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Police_station&amp;oldid=1056208781</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000375 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000375">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Warehouse</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store commercial goods.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Warehouse&amp;oldid=1063721454</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000381 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000381">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Weapon Manufacturing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed to produce or assemble weapons.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Arms_industry&amp;oldid=1063811497</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000410 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000410">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Residential Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to house one or more Persons.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Residence&amp;oldid=1019728937</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000421 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000421">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000330"/>
+        <rdfs:label xml:lang="en">Nuclear Power Plant</rdfs:label>
+        <skos:definition xml:lang="en">A Thermal Power Plant that is designed to produce heat by means of a nuclear reactor, which is then converted to electrical energy.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Nuclear_power_plant&amp;oldid=1062752651</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000423 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000423">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Motor Vehicle Manufacturing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed to manufacture automobiles.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Automotive_industry&amp;oldid=1061661751</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000432 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000432">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Missile Launch Site</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed for storing and launching missiles.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Missile_launch_facility&amp;oldid=1062709375</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000468 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000468">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001102"/>
+        <rdfs:label xml:lang="en">Office Building</rdfs:label>
+        <skos:definition xml:lang="en">A Commercial Facility that is designed as an environment for conducting commercial, professional, or bureaucratic work.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Office&amp;oldid=1063508719</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000479 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000479">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Public Safety Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for the prevention of and protection from events that could endanger, injure, or damage the general public.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Public_security&amp;oldid=1058257389</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000483 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000483">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Military Base</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed to shelter military equipment and personnel and to facilitate training and operations.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Military_base&amp;oldid=1047077734</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000510 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000510">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000052"/>
+        <rdfs:label xml:lang="en">Mosque</rdfs:label>
+        <skos:definition xml:lang="en">A Religious Facility that is designed for Islamic worship and prayer.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Mosque&amp;oldid=1062609892</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000531 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000531">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Communications Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to support processes of receiving or transmitting information.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000545 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000545">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000946"/>
+        <rdfs:label xml:lang="en">Seat of Local Government</rdfs:label>
+        <skos:altLabel xml:lang="en">City Hall</skos:altLabel>
+        <skos:altLabel xml:lang="en">Town Hall</skos:altLabel>
+        <skos:definition xml:lang="en">A Government Building that is designed for the administration of a local community.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Seat_of_government&amp;oldid=1063047501</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000583 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000583">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000180"/>
+        <rdfs:label xml:lang="en">Motel</rdfs:label>
+        <skos:definition xml:lang="en">A Hotel that is designed to accommodate motor vehicles along with their occupants.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Motel&amp;oldid=1063898961</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000639 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000639">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Mine</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to support the extraction of minerals or other geological materials from an orebody, lode, vein, seam, reef, or placer deposit within the earth.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Mining&amp;oldid=1062844924</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000641 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000641">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Entertainment Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to host activities that are intended to hold the interest of, or give pleasure or delight to, an audience.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Entertainment&amp;oldid=1061851778</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000655 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000655">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Mailing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for the systematic physical transportation of documents and packages.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Mail&amp;oldid=1057401839</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000664 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000664">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000531"/>
+        <rdfs:label xml:lang="en">Radio Relay Station</rdfs:label>
+        <skos:definition xml:lang="en">A Communications Facility that is designed to support the receiving and re-transmitting of radio signals.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000667 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000667">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Combat Outpost</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed to support the conduction of combat operations of limited scope or size.</skos:definition>
+        <cco:ont00001754>https://en.wikipedia.org/wiki/Outpost_(military)</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000670 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000670">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001258"/>
+        <rdfs:label xml:lang="en">Distribution Port</rdfs:label>
+        <skos:definition xml:lang="en">A Port that is designed with the cargo handling equipment necessary for the loading and unloading of Watercraft</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Port&amp;oldid=1064091505</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000677 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000677">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Product Transport Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to transport some product.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000680 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000680">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Medical Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store medical supplies.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000705 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000705">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000677"/>
+        <rdfs:label xml:lang="en">Power Transmission Line</rdfs:label>
+        <skos:definition xml:lang="en">A Product Transport Facility that is designed to transmit electricity over distance via a system of above ground wires including their supports.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Electric_power_transmission&amp;oldid=1062551058</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000708 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000708">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Water Tower</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is the bearer of functions realized in processes of storing water in an elevated container.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Water_tower&amp;oldid=1059754959</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000710 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000710">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Command Post Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed to support the command and control of Military Operations or Forces.</skos:definition>
+        <cco:ont00001754>http://www.dictionary.com/browse/command-post</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000717 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000717">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001076"/>
+        <rdfs:label xml:lang="en">Fossil Fuel Power Plant</rdfs:label>
+        <skos:definition xml:lang="en">An Electric Power Station that is designed to convert fossil fuels (e.g. coal, natural gas, or petroleum) into electrical energy.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Fossil_fuel&amp;oldid=1062298144</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000737 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000737">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000483"/>
+        <rdfs:label xml:lang="en">Forward Operations Base</rdfs:label>
+        <skos:altLabel xml:lang="en">Forward Operating Base</skos:altLabel>
+        <skos:definition xml:lang="en">A Military Base that is located relatively close to an offensive Area of Operations, is supported by the Base of Operations, and is designed to support local strategic objectives and tactical operations.</skos:definition>
+        <cco:ont00001753>FOB</cco:ont00001753>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Forward_operating_base&amp;oldid=1059263624</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000757 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000757">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000052"/>
+        <rdfs:label xml:lang="en">Synagogue</rdfs:label>
+        <skos:definition xml:lang="en">A Religious Facility that is designed for Judaic worship and prayer.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Synagogue&amp;oldid=1063773298</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000761 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000761">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000226"/>
+        <rdfs:label xml:lang="en">Pier</rdfs:label>
+        <skos:definition xml:lang="en">A Transportation Facility that is designed to partially enclose a harbor and form a landing place for Watercraft.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Pier&amp;oldid=1057802753</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000778 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000778">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Chemical Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store chemicals.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000782 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000782">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Factory</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for manufacturing or refining material products.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Factory&amp;oldid=1064125324</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000802 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000802">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000641"/>
+        <rdfs:label xml:lang="en">Stage</rdfs:label>
+        <skos:definition xml:lang="en">An Entertainment Facility that is designed to provide a space upon which entertaining performances or productions can occur.</skos:definition>
+        <cco:ont00001754>https://en.wikipedia.org/wiki/Stage_(theatre)</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000814 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000814">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Water Treatment Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for making water more acceptable for a specific end-use.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Water_treatment&amp;oldid=1061706931</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000846 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000846">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001076"/>
+        <rdfs:label xml:lang="en">Hydroelectric Power Plant</rdfs:label>
+        <skos:definition xml:lang="en">An Electric Power Station that is designed to convert hydropower into electrical power.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Hydroelectricity&amp;oldid=1062438236</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000867 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000867">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000677"/>
+        <rdfs:label xml:lang="en">Pipeline</rdfs:label>
+        <skos:definition xml:lang="en">A Product Transport Facility that is designed to transport goods or materials through a pipe.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Pipeline&amp;oldid=1024308788</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000881 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000881">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Storage Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to store materials or goods.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Storage&amp;oldid=1048222564</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000882 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000882">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001076"/>
+        <rdfs:label xml:lang="en">Wind Farm</rdfs:label>
+        <skos:definition xml:lang="en">An Electric Power Station that is designed to convert the wind&apos;s kinetic energy into electrical power by means of wind turbines.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Wind_farm&amp;oldid=1062817899</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000901 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000901">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001375"/>
+        <rdfs:label xml:lang="en">Decontamination Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Washing Facility that is designed to wash personnel or equipment after (potential) contamination by radioactive, biological, or chemical material.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Decontamination&amp;oldid=1049850150</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000905 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000905">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000655"/>
+        <rdfs:label xml:lang="en">Post Office</rdfs:label>
+        <skos:definition xml:lang="en">A Mailing Facility that is designed for serving customers of the national postal system.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Post_office&amp;oldid=1063684373</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000946 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000946">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Government Building</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for the administration of a community.</skos:definition>
+        <cco:ont00001754>https://en.wikipedia.org/wiki/Administration_(government)</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000957 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000957">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Reservoir</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store water in a man-made open enclosure or area.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Reservoir&amp;oldid=1055068000</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001052 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001052">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Military Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to support a Military Force.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Military&amp;oldid=1063431234</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001076 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001076">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Electric Power Station</rdfs:label>
+        <skos:altLabel xml:lang="en">Power Plant</skos:altLabel>
+        <skos:definition xml:lang="en">A Facility that is designed to generate electrical power.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Power_station&amp;oldid=1052973815</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001078 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001078">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000226"/>
+        <rdfs:label xml:lang="en">Airport</rdfs:label>
+        <skos:definition xml:lang="en">A Transportation Facility that is designed for launching, receiving, and housing Aircraft.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Airport&amp;oldid=1063243963</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001089 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001089">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001283"/>
+        <rdfs:label xml:lang="en">Petrochemical Refinery</rdfs:label>
+        <skos:definition xml:lang="en">A Refinery that is designed for refining crude oil, intermediate petroleum products, or synthetic petroleum into products of value.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Petrochemical&amp;oldid=1060574535</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001091 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001091">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Fort</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed to support the defense of or solidification of rule over some Geospatial Region and its inhabitants.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Fortification&amp;oldid=1060156408</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001098 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001098">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000055"/>
+        <rdfs:label xml:lang="en">Hospital</rdfs:label>
+        <skos:definition xml:lang="en">A Healthcare Facility that is designed to provide patient treatment with specialized staff and equipment.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Hospital&amp;oldid=1063047817</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001102 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001102">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Commercial Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for buying and selling goods and services, especially on a large scale.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Commerce&amp;oldid=1063120985</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001107 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001107">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001315"/>
+        <rdfs:label xml:lang="en">Landfill</rdfs:label>
+        <skos:definition xml:lang="en">A Waste Management Facility that is designed for disposing of waste by burial.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Landfill&amp;oldid=1058364420</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001165 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001165">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000332"/>
+        <rdfs:label xml:lang="en">Terrorist Training Camp</rdfs:label>
+        <skos:definition xml:lang="en">A Training Camp designed to teach students methods of terrorism.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Terrorist_training_camp&amp;oldid=1037856600</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001257 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001257">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Nuclear Storage Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store nuclear material.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001258 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001258">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000226"/>
+        <rdfs:label xml:lang="en">Port</rdfs:label>
+        <skos:definition xml:lang="en">A Transportation Facility that is designed to contain harbors for docking Watercraft and for transfering people or cargo to and from land.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Port&amp;oldid=1064091505</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001283 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001283">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Refinery</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed for refining raw materials into products of value.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Refinery&amp;oldid=1027092124</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001287 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001287">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Maintenance Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to be used to perform actions to maintain or improve the state of some property or equipment.</skos:definition>
+        <cco:ont00001754>http://www.dictionary.com/browse/maintain</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001295 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001295">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Financial Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to support the management of money.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Finance&amp;oldid=1062402926</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001297 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001297">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001052"/>
+        <rdfs:label xml:lang="en">Military Headquarters Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Military Facility that is designed for military administration and coordination.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Headquarters&amp;oldid=1046429636</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001308 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001308">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001315"/>
+        <rdfs:label xml:lang="en">Sewage Treatment Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Waste Management Facility that is designed for removing contaminants from wastewater, especially sewage.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Sewage_treatment&amp;oldid=1062966352</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001311 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001311">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000782"/>
+        <rdfs:label xml:lang="en">Aircraft Manufacturing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Factory that is designed to manufacture Aircraft.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Aerospace_manufacturer&amp;oldid=1059223410</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001315 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001315">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Waste Management Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed for managing waste for some portion of the waste&apos;s existence.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Waste_management&amp;oldid=1062844209</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001344 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001344">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000881"/>
+        <rdfs:label xml:lang="en">Biological Depot</rdfs:label>
+        <skos:definition xml:lang="en">A Storage Facility that is designed to store biological agents.</skos:definition>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001358 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001358">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000270"/>
+        <rdfs:label xml:lang="en">School</rdfs:label>
+        <skos:definition xml:lang="en">An Education Facility that is designed to provide learning space and environments for teaching of students under the direction of teachers.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=School&amp;oldid=1063515394</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001362 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001362">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001283"/>
+        <rdfs:label xml:lang="en">Gas Processing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Refinery that is designed for refining natural gas into products of value.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Natural-gas_processing&amp;oldid=1056700541</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001375 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001375">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000192"/>
+        <rdfs:label xml:lang="en">Washing Facility</rdfs:label>
+        <skos:definition xml:lang="en">A Facility that is designed to wash personnel or equipment.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Washing&amp;oldid=1035998791</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001380 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001380">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000339"/>
+        <rdfs:label xml:lang="en">Farm</rdfs:label>
+        <skos:definition xml:lang="en">An Agricultural Facility that is designed to produce food and other crops.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Farm&amp;oldid=1058311769</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001383 -->
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001383">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000479"/>
+        <rdfs:label xml:lang="en">Fire Station</rdfs:label>
+        <skos:altLabel xml:lang="en">Fire Hall</skos:altLabel>
+        <skos:altLabel xml:lang="en">Fire House</skos:altLabel>
+        <skos:definition xml:lang="en">A Public Safety Facility that is designed for the storage of firefighting apparatus.</skos:definition>
+        <cco:ont00001754 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/w/index.php?title=Fire_station&amp;oldid=1060666629</cco:ont00001754>
+        <cco:ont00001760 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.commoncoreontologies.org/FacilityOntology</cco:ont00001760>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

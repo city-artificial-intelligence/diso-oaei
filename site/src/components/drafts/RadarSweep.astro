@@ -1,0 +1,234 @@
+---
+/**
+ * Draft hero animation, variant 1 — "Situational picture".
+ * The actual DISO-OAEI network rendered as a radar/situational display: the
+ * ten ontologies are labelled contacts on the scope, clustered by subdomain
+ * into sectors, joined by the eight evaluation-pair edges (solid = Task 1,
+ * dashed = Task 2). A sweep beam passes and contacts flare as it crosses
+ * them. Same accessibility contract as the live hero: static frame under
+ * prefers-reduced-motion, pausable otherwise, textual fallback without
+ * JS/WebGL.
+ */
+---
+
+<div class="draft-viz">
+  <div
+    id="v1-host"
+    class="draft-host"
+    role="img"
+    aria-label="Radar-style display of the ten DISO ontologies as labelled contacts joined by the eight evaluation pairs. Task 1 pairs: ThinkHome–Brick, Brick–SmartEnv, City–Brick, JC3IEDM–mIO, JC3IEDM–Brick, and JC3IEDM–Facility. Task 2 pairs: UCO–STIX and STIX–D3FEND. A sweep beam passes and contacts flare as it crosses them.">
+  </div>
+  <noscript>
+    <p class="draft-fallback">
+      The ten DISO ontologies appear as labelled contacts on a radar scope,
+      joined by the eight evaluation pairs — six global-alignment pairs centred
+      on Brick and JC3IEDM, plus the UCO–STIX and STIX–D3FEND ranking pairs.
+      (Enable JavaScript for the animated view.)
+    </p>
+  </noscript>
+  <div class="draft-controls">
+    <button id="v1-pause" class="draft-pause" type="button" hidden>Pause animation</button>
+  </div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  const host = document.getElementById('v1-host');
+  const pauseBtn = document.getElementById('v1-pause') as HTMLButtonElement | null;
+  if (host) {
+    try {
+      const COLORS: Record<string, number> = { cyber: 0x1a9cc9, c2: 0xb7861f, built: 0x9678f0 };
+      // [name, domain, angle°, radius] on the scope — subdomain sectors:
+      // cyber to the east, C2/context north, built environment west/south;
+      // the two hubs (Brick, JC3IEDM) sit closer to the centre.
+      const NODES: Array<[string, string, number, number]> = [
+        ['UCO', 'cyber', -42, 2.05],
+        ['STIX', 'cyber', -8, 2.3],
+        ['D3FEND', 'cyber', 26, 2.0],
+        ['JC3IEDM', 'c2', 96, 1.15],
+        ['mIO', 'c2', 64, 2.15],
+        ['Facility', 'c2', 132, 2.1],
+        ['Brick', 'built', 205, 1.05],
+        ['ThinkHome', 'built', 172, 2.25],
+        ['SmartEnv', 'built', 232, 2.15],
+        ['CityOWL', 'built', 262, 2.05],
+      ];
+      const GLOBAL_EDGES = [
+        ['ThinkHome', 'Brick'], ['Brick', 'SmartEnv'], ['CityOWL', 'Brick'],
+        ['JC3IEDM', 'mIO'], ['JC3IEDM', 'Brick'], ['JC3IEDM', 'Facility'],
+      ];
+      const RANKING_EDGES = [['UCO', 'STIX'], ['STIX', 'D3FEND']];
+      const degree: Record<string, number> = {};
+      [...GLOBAL_EDGES, ...RANKING_EDGES].flat().forEach((n) => { degree[n] = (degree[n] ?? 0) + 1; });
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+      camera.position.set(0, 3.6, 5.2);
+      camera.lookAt(0, 0, 0);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      host.appendChild(renderer.domElement);
+      scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+
+      // Range rings + spokes
+      const ringMat = new THREE.LineBasicMaterial({ color: 0x2e4763, transparent: true, opacity: 0.9 });
+      for (const r of [0.9, 1.7, 2.5]) {
+        const pts: THREE.Vector3[] = [];
+        for (let i = 0; i <= 96; i++) {
+          const a = (i / 96) * Math.PI * 2;
+          pts.push(new THREE.Vector3(Math.cos(a) * r, 0, Math.sin(a) * r));
+        }
+        scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), ringMat));
+      }
+      for (let s = 0; s < 4; s++) {
+        const a = (s / 4) * Math.PI;
+        const p1 = new THREE.Vector3(Math.cos(a) * 2.5, 0, Math.sin(a) * 2.5);
+        scene.add(new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([p1.clone().negate(), p1]),
+          new THREE.LineBasicMaterial({ color: 0x24384f, transparent: true, opacity: 0.7 })
+        ));
+      }
+
+      // The DISO contacts: labelled spheres, sized by pair degree
+      const pos: Record<string, THREE.Vector3> = {};
+      const angleOf: Record<string, number> = {};
+      const nodeMats: Record<string, THREE.MeshStandardMaterial> = {};
+      const labelMats: Record<string, THREE.SpriteMaterial> = {};
+      NODES.forEach(([name, dom, deg, r]) => {
+        const a = (deg * Math.PI) / 180;
+        const p = new THREE.Vector3(Math.cos(a) * r, 0.04, Math.sin(a) * r);
+        pos[name] = p;
+        angleOf[name] = Math.atan2(p.z, p.x);
+        const rad = 0.075 + 0.02 * (degree[name] ?? 0);
+        const mat = new THREE.MeshStandardMaterial({
+          color: COLORS[dom], roughness: 0.4, metalness: 0.1,
+          emissive: COLORS[dom], emissiveIntensity: 0.25,
+        });
+        nodeMats[name] = mat;
+        const mesh = new THREE.Mesh(new THREE.SphereGeometry(rad, 24, 24), mat);
+        mesh.position.copy(p);
+        scene.add(mesh);
+
+        // Billboard label (same technique as the live hero)
+        const c = document.createElement('canvas');
+        const scale = 4;
+        const ctx = c.getContext('2d')!;
+        ctx.font = `500 ${12 * scale}px Inter, system-ui, sans-serif`;
+        const w = ctx.measureText(name).width;
+        c.width = w + 8 * scale;
+        c.height = 18 * scale;
+        const ctx2 = c.getContext('2d')!;
+        ctx2.font = `500 ${12 * scale}px Inter, system-ui, sans-serif`;
+        ctx2.fillStyle = '#dbe5f1';
+        ctx2.textBaseline = 'middle';
+        ctx2.fillText(name, 4 * scale, c.height / 2);
+        const tex = new THREE.CanvasTexture(c);
+        tex.anisotropy = 4;
+        const sMat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, opacity: 0.7 });
+        labelMats[name] = sMat;
+        const sprite = new THREE.Sprite(sMat);
+        const aspect = c.width / c.height;
+        sprite.scale.set(0.3 * aspect, 0.3, 1);
+        sprite.position.copy(p).add(new THREE.Vector3(0, rad + 0.24, 0));
+        scene.add(sprite);
+      });
+
+      // The eight evaluation pairs, drawn on the scope
+      const addEdge = (a: string, b: string, dashed: boolean) => {
+        const lift = new THREE.Vector3(0, 0.02, 0);
+        const geo = new THREE.BufferGeometry().setFromPoints([pos[a].clone().add(lift), pos[b].clone().add(lift)]);
+        const mat = dashed
+          ? new THREE.LineDashedMaterial({ color: 0x9fb6cd, dashSize: 0.12, gapSize: 0.09, transparent: true, opacity: 0.85 })
+          : new THREE.LineBasicMaterial({ color: 0x7e97b1, transparent: true, opacity: 0.7 });
+        const line = new THREE.Line(geo, mat);
+        if (dashed) line.computeLineDistances();
+        scene.add(line);
+      };
+      GLOBAL_EDGES.forEach(([a, b]) => addEdge(a, b, false));
+      RANKING_EDGES.forEach(([a, b]) => addEdge(a, b, true));
+
+      // Sweep beam: faint wedge + leading line
+      const beam = new THREE.Group();
+      const wedgeGeo = new THREE.CircleGeometry(2.5, 24, 0, 0.5);
+      wedgeGeo.rotateX(-Math.PI / 2);
+      beam.add(new THREE.Mesh(wedgeGeo, new THREE.MeshBasicMaterial({
+        color: 0x4fc3e8, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false,
+      })));
+      beam.add(new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0.01, 0), new THREE.Vector3(2.5, 0.01, 0)]),
+        new THREE.LineBasicMaterial({ color: 0x7dd3f0, transparent: true, opacity: 0.9 })
+      ));
+      scene.add(beam);
+
+      // Contacts flare as the beam crosses them, then decay
+      const glow: Record<string, number> = {};
+      NODES.forEach(([n]) => { glow[n] = 0; });
+      const paint = (sweepAngle: number) => {
+        for (const [name] of NODES) {
+          let d = angleOf[name] - sweepAngle;
+          d = Math.atan2(Math.sin(d), Math.cos(d));
+          if (d < 0 && d > -0.5) glow[name] = Math.max(glow[name], 1 + d / 0.5);
+          glow[name] *= 0.985;
+          nodeMats[name].emissiveIntensity = 0.25 + glow[name] * 1.4;
+          labelMats[name].opacity = 0.7 + glow[name] * 0.3;
+        }
+      };
+
+      const size = () => {
+        const w = host.clientWidth || 480;
+        const h = Math.max(280, Math.min(400, w * 0.7));
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.render(scene, camera);
+      };
+
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let playing = !reduced;
+      let angle = 2.0;
+
+      // static frame: beam frozen mid-sweep with a plausible afterglow trail
+      beam.rotation.y = -angle;
+      for (let k = 60; k >= 0; k--) paint(angle - k * 0.012);
+      size();
+      new ResizeObserver(size).observe(host);
+
+      if (pauseBtn && !reduced) {
+        pauseBtn.hidden = false;
+        pauseBtn.addEventListener('click', () => {
+          playing = !playing;
+          pauseBtn.textContent = playing ? 'Pause animation' : 'Resume animation';
+          if (playing) tick();
+        });
+      }
+
+      let loopRunning = false;
+      const step = () => {
+        if (playing) {
+          angle += 0.011;
+          beam.rotation.y = -angle;
+          paint(angle);
+          renderer.render(scene, camera);
+          requestAnimationFrame(step);
+        } else {
+          renderer.render(scene, camera);
+          loopRunning = false;
+        }
+      };
+      const tick = () => {
+        if (loopRunning) return;
+        loopRunning = true;
+        requestAnimationFrame(step);
+      };
+      if (playing) tick();
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) renderer.render(scene, camera);
+      });
+    } catch {
+      host.innerHTML =
+        '<p class="draft-fallback">The ten DISO ontologies appear as labelled contacts on a radar scope, joined by the eight evaluation pairs. (WebGL unavailable.)</p>';
+    }
+  }
+</script>

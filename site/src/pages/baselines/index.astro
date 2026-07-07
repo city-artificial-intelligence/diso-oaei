@@ -1,0 +1,368 @@
+---
+import fs from 'node:fs';
+import { withBase } from '../../config';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+
+// The page is generated from leaderboard.json (the machine-readable results
+// file at the repo root) at build time — tables can never drift from the data.
+// ROOT is derived from the working directory (always site/ under npm scripts):
+// import.meta.url would point at the compiled chunk during `astro build`, so a
+// source-relative path breaks for pages nested below src/pages/.
+const ROOT = path.resolve(process.cwd(), '..');
+const lb = JSON.parse(fs.readFileSync(path.join(ROOT, 'leaderboard.json'), 'utf8'));
+
+type Agg = {
+  matcher: string;
+  n_pairs: number;
+  micro_Rplus: { P: number; R: number; F1: number };
+  macro_Rplus: { F1: number };
+  micro_Rapprox: { F1: number };
+  macro_Rapprox: { F1: number };
+};
+
+const agg: Agg[] = lb.task1_global.aggregate;
+const full = agg.filter((m) => m.n_pairs === 6).sort((a, b) => b.micro_Rplus.F1 - a.micro_Rplus.F1);
+const partial = agg.filter((m) => m.n_pairs !== 6).sort((a, b) => b.micro_Rplus.F1 - a.micro_Rplus.F1);
+
+const pairs = ['thinkhome-brick', 'brick-smartenv', 'city-brick', 'jc3iedm-mio', 'jc3iedm-brick', 'jc3iedm-facility'];
+const best = lb.task1_global.per_pair_best;
+const refs = lb.task1_global.reference_sizes;
+
+// |A| (mappings computed) per matcher×pair, from the published detail TSV (CRLF-terminated)
+const detailRows = fs
+  .readFileSync(path.join(ROOT, 'tasks/global/baselines/global_detail.tsv'), 'utf8')
+  .split('\n')
+  .filter(Boolean)
+  .map((l) => l.replace(/\r$/, '').split('\t'));
+const detailHead = detailRows[0];
+const predOf = new Map(
+  detailRows.slice(1).map((c) => [`${c[0]}|${c[1]}`, Number(c[detailHead.indexOf('pred')])])
+);
+
+// TBox-level coherence of the merged pair under the best system's alignment,
+// from the published data extract (best-per-pair slice of the per-system
+// coherence matrix; the full matrix ships with the supplementary materials).
+const coherence = JSON.parse(
+  fs.readFileSync(path.join(ROOT, 'tasks/global/baselines/coherence_best_per_pair.json'), 'utf8')
+).pairs;
+for (const p of pairs) {
+  if (coherence[p].matcher !== best[p].matcher)
+    throw new Error(`coherence_best_per_pair.json is stale: ${p} best matcher ${best[p].matcher} != ${coherence[p].matcher}`);
+}
+
+const f3 = (x: number) => x.toFixed(3);
+
+const t2 = lb.task2_ranking;
+const baselines = [
+  { key: 'lexical', label: 'naive-lexical (char-3-gram Jaccard)' },
+  { key: 'minilm', label: 'all-MiniLM-L6-v2' },
+];
+const hitCols = ['hits_at_1', 'hits_at_3', 'hits_at_5', 'hits_at_10', 'mrr'] as const;
+const hitLabels = ['Hits@1', 'Hits@3', 'Hits@5', 'Hits@10', 'MRR'];
+const t2pairs = ['uco-stix', 'stix-d3fend'];
+
+// Bar chart geometry (single measure — micro-F1 on R+ — so a single validated hue)
+const BAR_H = 30;
+const GAP = 10;
+const LABEL_W = 118;
+const CHART_W = 640;
+const chartH = full.length * (BAR_H + GAP) - GAP;
+---
+
+<Base
+  title="Baselines"
+  description="Baseline results for DISO-OAEI: partiality-corrected P/R/F1 for global alignment matchers, and Hits@k / MRR for the ranking baselines."
+>
+  <div class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={withBase('/')}>Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Baselines</span>
+      </nav>
+      <h1>Baselines</h1>
+      <p class="lead">
+        Organiser-run baseline systems for both tasks, published before the competition.
+        Participant submissions are not added to these tables — they will appear on the
+        <a href={withBase('/results/')}>results page</a>, fed by the live leaderboard, once the evaluation
+        window opens (12 July 2026).
+      </p>
+    </div>
+  </div>
+
+  <section class="section" style="border-top:none;" aria-labelledby="t1-h">
+    <div class="container">
+      <p class="kicker">Task 1 — global alignment</p>
+      <h2 id="t1-h">Partiality-corrected P/R/F1</h2>
+      <p class="section-lede">
+        Headline scores are computed against the repaired silver standard
+        R⁺<sub>≈</sub>; scores against the unrepaired R<sub>≈</sub> are secondary.
+        Metrics score all named-entity equivalences in the reference — classes,
+        properties, and individuals alike — see
+        <a href={withBase('/evaluation/')}>evaluation metrics</a>. Eight matchers cover all six pairs;
+        five further matchers were run only on the two openly redistributable JC3IEDM pairs
+        and are listed separately (their numbers are not comparable to the full set).
+      </p>
+
+      <h3>Micro-F1 on R⁺<sub>≈</sub> — all six pairs</h3>
+      <figure role="img" aria-label={`Bar chart of micro F1 scores on the repaired reference for the eight matchers covering all six pairs. ${full.map((m) => `${m.matcher}: ${f3(m.micro_Rplus.F1)}`).join(', ')}.`}>
+        <svg viewBox={`0 0 ${CHART_W} ${chartH}`} width="100%" style={`max-width:${CHART_W}px; display:block; overflow:visible;`}>
+          {full.map((m, i) => {
+            const w = Math.round((CHART_W - LABEL_W - 56) * m.micro_Rplus.F1);
+            const y = i * (BAR_H + GAP);
+            return (
+              <g>
+                <title>{`${m.matcher} — micro-F1 ${f3(m.micro_Rplus.F1)} (P ${f3(m.micro_Rplus.P)}, R ${f3(m.micro_Rplus.R)})`}</title>
+                <text x={LABEL_W - 10} y={y + BAR_H / 2} text-anchor="end" dominant-baseline="central" style="font: 500 13px var(--font-text); fill: var(--ink-2);">{m.matcher}</text>
+                <rect x={LABEL_W} y={y + 4} width={w} height={BAR_H - 8} rx="4" style="fill: var(--chart-bar);" />
+                <text x={LABEL_W + w + 8} y={y + BAR_H / 2} dominant-baseline="central" style="font: 500 12px var(--font-mono); fill: var(--ink-3);">{f3(m.micro_Rplus.F1)}</text>
+              </g>
+            );
+          })}
+        </svg>
+      </figure>
+
+      <h3 style="margin-top:2rem;">Comparable set — 8 matchers, all 6 pairs</h3>
+      <div class="table-wrap">
+        <table class="sortable">
+          <thead>
+            <tr>
+              <th rowspan="2" data-col="0" style="vertical-align: bottom;">Matcher</th>
+              <th colspan="3" data-nosort style="text-align:center;">Micro-averaged, R⁺<sub>≈</sub> (headline)</th>
+              <th class="num" rowspan="2" data-col="4" style="vertical-align: bottom;">Macro-F1, R⁺<sub>≈</sub></th>
+              <th class="num" rowspan="2" data-col="5" style="vertical-align: bottom;">Micro-F1, R<sub>≈</sub></th>
+              <th class="num" rowspan="2" data-col="6" style="vertical-align: bottom;">Macro-F1, R<sub>≈</sub></th>
+            </tr>
+            <tr>
+              <th class="num" data-col="1">P</th>
+              <th class="num" data-col="2">R</th>
+              <th class="num" data-col="3">F1</th>
+            </tr>
+          </thead>
+          <tbody>
+            {full.map((m, i) => (
+              <tr>
+                <td>{m.matcher}</td>
+                <td class="num">{f3(m.micro_Rplus.P)}</td>
+                <td class="num">{f3(m.micro_Rplus.R)}</td>
+                <td class="num">{i === 0 ? <span class="best">{f3(m.micro_Rplus.F1)}</span> : f3(m.micro_Rplus.F1)}</td>
+                <td class="num">{f3(m.macro_Rplus.F1)}</td>
+                <td class="num">{f3(m.micro_Rapprox.F1)}</td>
+                <td class="num">{f3(m.macro_Rapprox.F1)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem; color:var(--ink-3);">Headline = micro-F1 on the repaired reference R⁺<sub>≈</sub>; the unrepaired R<sub>≈</sub> columns are secondary. Columns sort on click.</p>
+
+      <details>
+        <summary>Partial coverage — 5 matchers, JC3IEDM pairs only (n=2)</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Matcher</th><th class="num">n pairs</th>
+                  <th class="num">Micro-P (R⁺<sub>≈</sub>)</th><th class="num">Micro-R (R⁺<sub>≈</sub>)</th><th class="num">Micro-F1 (R⁺<sub>≈</sub>)</th><th class="num">Macro-F1 (R⁺<sub>≈</sub>)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {partial.map((m) => (
+                  <tr>
+                    <td>{m.matcher}</td>
+                    <td class="num">{m.n_pairs}</td>
+                    <td class="num">{f3(m.micro_Rplus.P)}</td>
+                    <td class="num">{f3(m.micro_Rplus.R)}</td>
+                    <td class="num">{f3(m.micro_Rplus.F1)}</td>
+                    <td class="num">{f3(m.macro_Rplus.F1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.85rem; color:var(--ink-3);">Run only on jc3iedm-mio and jc3iedm-facility; not comparable with the six-pair set above. Micro pools TP/judgeable/|R| across the two pairs; macro is the unweighted mean of the per-pair F1 values.</p>
+        </div>
+      </details>
+
+      <h3 style="margin-top:2rem;">Best matcher per pair</h3>
+      <div class="table-wrap">
+        <table class="sortable">
+          <thead>
+            <tr><th>Pair</th><th>Best matcher</th><th class="num">Mappings |A|</th><th class="num">P</th><th class="num">R</th><th class="num">F1 (R⁺<sub>≈</sub>)</th><th>Coherent (TBox)</th></tr>
+          </thead>
+          <tbody>
+            {pairs.map((p) => (
+              <tr>
+                <td class="mono">{p}</td>
+                <td>{best[p].matcher}</td>
+                <td class="num">{predOf.get(`${p}|${best[p].matcher}`)}</td>
+                <td class="num">{f3(best[p].P)}</td>
+                <td class="num">{f3(best[p].R)}</td>
+                <td class="num">{f3(best[p].F1_Rplus)}</td>
+                <td>{coherence[p].coherent ? 'yes' : `no — ${coherence[p].unsat_classes.toLocaleString('en-GB')} unsat classes`}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem; color:var(--ink-3);">
+        “Coherent (TBox)” is the TBox-level coherence of the merged ontology pair under the system's
+        alignment (complete reasoner, individuals removed;
+        data: <a href={withBase('/tasks/global/baselines/coherence_best_per_pair.json')}>coherence_best_per_pair.json</a>);
+        with-ABox effects are reported separately in the supplementary analysis. Full matcher × pair detail:
+        <a href={withBase('/tasks/global/baselines/global_detail.tsv')}>global_detail.tsv</a> ·
+        <a href={withBase('/tasks/global/baselines/global_aggregate.tsv')}>global_aggregate.tsv</a> ·
+        <a href={withBase('/tasks/global/baselines/global_results.json')}>global_results.json</a>.
+      </p>
+
+      <h3 style="margin-top:2rem;">Reference sizes</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Pair</th><th class="num">|R≈|</th><th class="num">|R⁺≈|</th><th>Repaired</th></tr>
+          </thead>
+          <tbody>
+            {pairs.map((p) => (
+              <tr>
+                <td class="mono">{p}</td>
+                <td class="num">{refs[p].Rapprox}</td>
+                <td class="num">{refs[p].Rplus}</td>
+                <td>{refs[p].coherent ? '—' : 'yes'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem; color:var(--ink-3);">
+        Unique equivalence pairs per reference. “Repaired: —” means the silver was already coherent at
+        the TBox level (R<sub>≈</sub> ≡ R⁺<sub>≈</sub>); see
+        <a href={withBase('/tasks/global/#how-the-repaired-reference-was-constructed')}>how the repaired reference
+        was constructed</a>.
+      </p>
+
+      <h3 style="margin-top:2rem;">Reported analysis: TBox-only scoring ablation</h3>
+      <p style="max-width:68ch;">
+        Because 60% of the headline reference consists of individual–individual correspondences,
+        we also publish a counterfactual in which every individual cell is removed from both the
+        alignments and the references and everything is rescored. The reference shrinks
+        (|R⁺<sub>≈</sub>| 488 → 190) and the top ranks reorder — the gap between the two views is
+        itself a finding about instance matching.
+        <a href={withBase('/baselines/tbox-ablation/')}>Read the TBox-only ablation →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="t2-h">
+    <div class="container">
+      <p class="kicker">Task 2 — local equivalence ranking</p>
+      <h2 id="t2-h">Hits&#64;k and MRR</h2>
+      <p class="section-lede">
+        Reference baselines with a fixed abstention threshold τ=0.5; references are private.
+        The headline is the unweighted macro-average over the two pairs. The silver is
+        lexically clean (same-label equivalences dominate), so the naive string baseline
+        beats the neural encoder — the contribution is the task design.
+      </p>
+
+      <h3>Macro-averaged over both pairs</h3>
+      <div class="table-wrap">
+        <table class="sortable">
+          <thead>
+            <tr><th>Baseline</th>{hitLabels.map((h) => <th class="num">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {baselines.map((b) => (
+              <tr>
+                <td>{b.label}</td>
+                {hitCols.map((c) => <td class="num">{f3(t2[b.key].MACRO[c])}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:2rem;">Per pair</h3>
+      <div class="table-wrap">
+        <table class="sortable">
+          <thead>
+            <tr><th>Pair</th><th>Baseline</th><th class="num">Queries</th>{hitLabels.map((h) => <th class="num">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {t2pairs.map((p) =>
+              baselines.map((b) => (
+                <tr>
+                  <td class="mono">{p}</td>
+                  <td>{b.key === 'lexical' ? 'lexical' : 'MiniLM'}</td>
+                  <td class="num">{t2[b.key][p].overall.queries}</td>
+                  {hitCols.map((c) => <td class="num">{f3(t2[b.key][p].overall[c])}</td>)}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      <details>
+        <summary>Matched-only / NIL-only breakdown</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Pair</th><th>Baseline</th><th>Subset</th><th class="num">Queries</th><th class="num">Hits@1</th><th class="num">MRR</th></tr>
+              </thead>
+              <tbody>
+                {t2pairs.map((p) =>
+                  baselines.map((b) =>
+                    (['matched', 'NIL'] as const).map((s) => (
+                      <tr>
+                        <td class="mono">{p}</td>
+                        <td>{b.key === 'lexical' ? 'lexical' : 'MiniLM'}</td>
+                        <td>{s}</td>
+                        <td class="num">{t2[b.key][p][s].queries}</td>
+                        <td class="num">{f3(t2[b.key][p][s].hits_at_1)}</td>
+                        <td class="num">{f3(t2[b.key][p][s].mrr)}</td>
+                      </tr>
+                    ))
+                  )
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <p style="font-size:0.9rem; color:var(--ink-2); margin-top:1.4rem;">
+        Metrics are reported overall plus matched-only, NIL-only, and per-type; see
+        <a href={withBase('/evaluation/')}>evaluation metrics</a> and the
+        <a href={withBase('/tasks/ranking/')}>Task 2 description</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="editions-h">
+    <div class="container">
+      <p class="kicker">Editions</p>
+      <h2 id="editions-h">Baselines and results by edition</h2>
+      <p class="section-lede">
+        DISO-OAEI 2026 is the first edition, so there are no previous years yet. As the track
+        matures, each edition's final baselines and participant results will be archived here,
+        and changes to the datasets and results between editions are recorded in the
+        <a href={withBase('/changelog/')}>changelog</a>.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Edition</th><th>Status</th><th>Baselines</th><th>Machine-readable snapshot</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026</td>
+              <td>current — evaluation &amp; leaderboard open 12 July 2026</td>
+              <td>this page</td>
+              <td><a class="mono" href={withBase('/results/2026/leaderboard.json')}>results/2026/leaderboard.json</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,83 @@
+---
+import { withBase } from '../config';
+
+interface Props {
+  pathname: string;
+}
+const { pathname } = Astro.props;
+
+const items = [
+  { href: '/tasks/', label: 'Tasks' },
+  { href: '/ontologies/', label: 'Ontologies' },
+  { href: '/baselines/', label: 'Baselines' },
+  { href: '/results/', label: 'Results' },
+  { href: '/quickstart/', label: 'Quickstart' },
+  { href: '/evaluation/', label: 'Evaluation' },
+  { href: '/primer/', label: 'Primer' },
+  { href: '/about/', label: 'About' },
+];
+const base = withBase('');
+const norm = (p: string) => (p.endsWith('/') ? p : p + '/');
+const current = (href: string) => {
+  // compare base-stripped pathname against the route
+  const raw = base && pathname.startsWith(base) ? pathname.slice(base.length) || '/' : pathname;
+  const p = norm(raw);
+  if (href === '/tasks/') return p.startsWith('/tasks/');
+  if (href === '/baselines/') return p.startsWith('/baselines/');
+  return p === href;
+};
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={withBase('/')}>
+      <!-- Diamond mark, an homage to the OAEI logo (oaei.ontologymatching.org):
+           the OAEI diamond with its N/W/E/S letters, recut for DISO in the site
+           palette. Colours are theme tokens, so the mark follows the theme toggle. -->
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="11" y="11" width="42" height="42" rx="6" transform="rotate(45 32 32)"
+              fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="2.5" />
+        <g fill="var(--ink)" style="font: 700 15px Georgia, 'Times New Roman', serif;">
+          <text x="32" y="19" text-anchor="middle" dominant-baseline="central">D</text>
+          <text x="20" y="33" text-anchor="middle" dominant-baseline="central">I</text>
+          <text x="44" y="33" text-anchor="middle" dominant-baseline="central">S</text>
+          <text x="32" y="47" text-anchor="middle" dominant-baseline="central">O</text>
+        </g>
+      </svg>
+      DISO-OAEI
+      <span class="edition">2026</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {items.map((it) => (
+          <li>
+            <a href={withBase(it.href)} aria-current={current(it.href) ? 'page' : undefined}>{it.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.4" />
+        <path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7" />
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.4 14.4A8.5 8.5 0 0 1 9.6 3.6a8.5 8.5 0 1 0 10.8 10.8Z" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const system = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const active = root.dataset.theme ?? system;
+    const next = active === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+</script>

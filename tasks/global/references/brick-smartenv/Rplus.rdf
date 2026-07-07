@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1><Ontology rdf:about="https://brickschema.org/schema/1.4/Brick"/></onto1>
+<onto2><Ontology rdf:about="http://www.semanticweb.org/dave/ontologies/SmartEnvFull#"/></onto2>
+<map><Cell>
+<entity1 rdf:resource="http://data.ashrae.org/bacnet/2020#Action"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Action"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://data.ashrae.org/bacnet/2020#EventType"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://qudt.org/vocab/unit/DAY"/>
+<entity2 rdf:resource="http://www.w3.org/2006/time#unitDay"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://qudt.org/vocab/unit/HR"/>
+<entity2 rdf:resource="http://www.w3.org/2006/time#unitHour"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://qudt.org/vocab/unit/MIN"/>
+<entity2 rdf:resource="http://www.w3.org/2006/time#unitMinute"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://qudt.org/vocab/unit/SEC"/>
+<entity2 rdf:resource="http://www.w3.org/2006/time#unitSecond"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://qudt.org/vocab/unit/WK"/>
+<entity2 rdf:resource="http://www.w3.org/2006/time#unitWeek"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://schema.org/Person"/>
+<entity2 rdf:resource="https://schema.org/Person"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://brickschema.org/schema/Brick#Entity"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://brickschema.org/schema/Brick#Parameter"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://brickschema.org/schema/Brick#Sensor"/>
+<entity2 rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://brickschema.org/schema/Brick#Substance"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Substance"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://brickschema.org/schema/Brick#System"/>
+<entity2 rdf:resource="http://www.w3.org/ns/ssn/System"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://w3id.org/rec#Geometry"/>
+<entity2 rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://w3id.org/rec#Organization"/>
+<entity2 rdf:resource="https://schema.org/Organization"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://w3id.org/rec#Region"/>
+<entity2 rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+<map><Cell>
+<entity1 rdf:resource="https://w3id.org/rec#locatedIn"/>
+<entity2 rdf:resource="http://observedchange.com/tisc/ns#locatedAt"/>
+<relation>=</relation>
+<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+</Cell></map>
+</Alignment>
+</rdf:RDF>

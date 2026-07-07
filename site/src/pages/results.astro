@@ -1,0 +1,175 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { CODABENCH_URL, CODABENCH_T2_URL, LIVE_RESULTS_REL, withBase } from '../config';
+
+// Participant results, rendered from the CI-written CodaBench snapshot
+// (results/live/codabench.json). Until the evaluation window opens the file
+// does not exist and the page explains how to submit instead.
+// cwd is site/ under npm scripts; see baselines/index.astro for why
+// import.meta.url is not safe here.
+const ROOT = path.resolve(process.cwd(), '..');
+const LIVE = path.join(ROOT, LIVE_RESULTS_REL);
+
+type Row = { system: string; team?: string; date?: string; scores: Record<string, number> };
+type Live = {
+  fetched_at?: string;
+  competition_url?: string;
+  task1_global?: Row[];
+  task2_ranking?: Row[];
+};
+
+const live: Live | null = fs.existsSync(LIVE) ? JSON.parse(fs.readFileSync(LIVE, 'utf8')) : null;
+
+const f3 = (x: number | undefined) => (typeof x === 'number' ? x.toFixed(3) : '—');
+const day = (d?: string) => (d ? d.slice(0, 10) : '—');
+
+// Column keys match the scoring-program output defined in guides/CODABENCH_SETUP.md.
+const T1_COLS = [
+  { key: 'micro_P', label: 'P (µ)' },
+  { key: 'micro_R', label: 'R (µ)' },
+  { key: 'micro_F1', label: 'F1 (µ, R⁺≈)' },
+  { key: 'macro_F1', label: 'F1 (M, R⁺≈)' },
+];
+const T2_COLS = [
+  { key: 'macro_mrr', label: 'MRR' },
+  { key: 'macro_h1', label: 'Hits@1' },
+  { key: 'macro_h3', label: 'Hits@3' },
+  { key: 'macro_h5', label: 'Hits@5' },
+  { key: 'macro_h10', label: 'Hits@10' },
+];
+
+const t1 = (live?.task1_global ?? []).slice().sort((a, b) => (b.scores.micro_F1 ?? 0) - (a.scores.micro_F1 ?? 0));
+const t2 = (live?.task2_ranking ?? []).slice().sort((a, b) => (b.scores.macro_mrr ?? 0) - (a.scores.macro_mrr ?? 0));
+const portal = live?.competition_url ?? CODABENCH_URL;
+---
+
+<Base
+  title="Results"
+  description="Participant results for the DISO-OAEI track: submitted systems and their scores for the global alignment and local equivalence ranking tasks."
+>
+  <div class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={withBase('/')}>Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Results</span>
+      </nav>
+      <h1>Participant Results</h1>
+      <p class="lead">
+        Systems submitted to the 2026 evaluation. Scores are pulled from the live leaderboard on
+        the submission platform and re-published here on a schedule; organiser-run reference
+        systems live on the <a href={withBase('/baselines/')}>baselines page</a>.
+      </p>
+    </div>
+  </div>
+
+  {!live && (
+    <section class="section" style="border-top:none;" aria-labelledby="none-h">
+      <div class="container">
+        <h2 id="none-h">No submissions yet</h2>
+        <p class="section-lede">
+          The evaluation window opens on <strong>12 July 2026</strong> and closes on
+          1 September 2026. Submitted systems and their scores will be listed here — updated
+          automatically from the live leaderboard — once the window opens.
+        </p>
+        <div class="notice">
+          <span aria-hidden="true">ℹ</span>
+          <span>
+            Submit via CodaBench:
+            {' '}<a href={CODABENCH_URL}>Task 1 — Global Alignment</a> ·
+            {' '}<a href={CODABENCH_T2_URL}>Task 2 — Local Equivalence Ranking</a>.
+            To prepare: work through the <a href={withBase('/quickstart/')}>quickstart</a>, validate your
+            files with the provided scripts, and (for Task 1) self-score locally against the public
+            references.
+          </span>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {live && (
+    <section class="section" style="border-top:none;" aria-labelledby="lt1-h">
+      <div class="container">
+        <p class="kicker">Task 1 — global alignment</p>
+        <h2 id="lt1-h">Submitted systems</h2>
+        <div class="table-wrap">
+          <table class="sortable">
+            <thead>
+              <tr>
+                <th>#</th><th>System</th><th>Team</th>
+                {T1_COLS.map((c) => <th class="num">{c.label}</th>)}
+                <th>Submitted</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t1.map((r, i) => (
+                <tr>
+                  <td class="num">{i + 1}</td>
+                  <td>{r.system}</td>
+                  <td>{r.team ?? '—'}</td>
+                  {T1_COLS.map((c) => <td class="num">{f3(r.scores[c.key])}</td>)}
+                  <td>{day(r.date)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {t1.length === 0 && <p>No Task 1 submissions yet.</p>}
+      </div>
+    </section>
+  )}
+
+  {live && (
+    <section class="section" aria-labelledby="lt2-h">
+      <div class="container">
+        <p class="kicker">Task 2 — local equivalence ranking</p>
+        <h2 id="lt2-h">Submitted systems</h2>
+        <div class="table-wrap">
+          <table class="sortable">
+            <thead>
+              <tr>
+                <th>#</th><th>System</th><th>Team</th>
+                {T2_COLS.map((c) => <th class="num">{c.label}</th>)}
+                <th>Submitted</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t2.map((r, i) => (
+                <tr>
+                  <td class="num">{i + 1}</td>
+                  <td>{r.system}</td>
+                  <td>{r.team ?? '—'}</td>
+                  {T2_COLS.map((c) => <td class="num">{f3(r.scores[c.key])}</td>)}
+                  <td>{day(r.date)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {t2.length === 0 && <p>No Task 2 submissions yet.</p>}
+        <p style="font-size:0.85rem; color:var(--ink-3); margin-top:1.2rem;">
+          Snapshot taken {live.fetched_at ? day(live.fetched_at) : 'recently'} from the
+          {' '}{portal ? <a href={portal}>live leaderboard</a> : 'live leaderboard'};
+          the site republishes it on a schedule, so very recent submissions may not appear yet.
+          Task 1 is headlined by micro-F1 against R⁺<sub>≈</sub>; Task 2 by macro-MRR.
+          See <a href={withBase('/evaluation/')}>evaluation metrics</a>.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="how-h">
+    <div class="container">
+      <p class="kicker">Participate</p>
+      <h2 id="how-h">How to submit</h2>
+      <p class="section-lede">
+        Work through the <a href={withBase('/quickstart/')}>quickstart</a>: download the data, produce one
+        alignment RDF per Task 1 pair and/or one ranking JSONL per Task 2 pair, validate them with
+        the provided scripts, and submit via CodaBench —
+        {' '}<a href={CODABENCH_URL}>Task 1</a> · <a href={CODABENCH_T2_URL}>Task 2</a>.
+        Results for previous editions will be archived on the
+        <a href={withBase('/baselines/')}>baselines page</a> as the track matures.
+      </p>
+    </div>
+  </section>
+</Base>

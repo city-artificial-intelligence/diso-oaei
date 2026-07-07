@@ -1,0 +1,370 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../config';
+
+// Reported analysis: the TBox-only scoring counterfactual. Values are ported
+// from the verified organiser data (coherence-eval tbox_counterfactual results;
+// 58/58 rows independently reproduced at 1e-9, unfiltered control reproduces
+// the published board exactly) and cross-checked against that data on port.
+
+const f3 = (x: number) => x.toFixed(3);
+
+// Comparable set (8 matchers, all six pairs): published vs TBox-only, micro vs R+.
+const full = [
+  { m: 'AML',           pub: [0.894, 0.346, 0.499], cf: [0.894, 0.89, 0.892], d: '+0.393 · 3rd→1st', dir: 'up', best: true },
+  { m: 'LogMap',        pub: [0.957, 0.777, 0.858], cf: [0.91, 0.695, 0.788], d: '−0.069 · 1st→2nd', dir: 'down' },
+  { m: 'LogMapLt',      pub: [0.778, 0.424, 0.549], cf: [0.752, 0.816, 0.783], d: '+0.234 · 2nd→3rd', dir: 'up' },
+  { m: 'BertMapLt',     pub: [0.906, 0.217, 0.35],  cf: [0.906, 0.558, 0.691], d: '+0.340 · 5th→4th', dir: 'up' },
+  { m: 'Matcha',        pub: [0.441, 0.488, 0.463], cf: [0.574, 0.858, 0.688], d: '+0.225 · 4th→5th', dir: 'up' },
+  { m: 'SecureBertMap', pub: [0.961, 0.203, 0.335], cf: [0.961, 0.521, 0.676], d: '+0.341 · 6th', dir: 'up' },
+  { m: 'BertMap',       pub: [0.941, 0.197, 0.325], cf: [0.941, 0.505, 0.658], d: '+0.332 · 7th', dir: 'up' },
+  { m: 'CySecBertMap',  pub: [0.96, 0.195, 0.324],  cf: [0.96, 0.5, 0.657],   d: '+0.334 · 8th', dir: 'up' },
+];
+
+// JC3IEDM-only matchers (n=2).
+const partial = [
+  { m: 'ALOD2Vec',  pub: 0.403, cf: 0.901, d: '+0.498 · 2nd→1st', dir: 'up', best: true },
+  { m: 'LogMapLLM', pub: 0.933, cf: 0.89,  d: '−0.043 · 1st→2nd', dir: 'down' },
+  { m: 'ATMatcher', pub: 0.384, cf: 0.803, d: '+0.419 · 3rd', dir: 'up' },
+  { m: 'KGMatcher', pub: 0.155, cf: 0.491, d: '+0.336 · 5th→4th', dir: 'up' },
+  { m: 'Fine-TOM',  pub: 0.256, cf: 0.471, d: '+0.215 · 4th→5th', dir: 'up' },
+];
+
+// Reference shrinkage; max recall = TBox-only |R+| over published |R+|.
+const shrink = [
+  { p: 'thinkhome-brick',  rp: [66, 52],  ra: [116, 98], max: '78.8%' },
+  { p: 'brick-smartenv',   rp: [18, 13],  ra: [47, 42],  max: '72.2%' },
+  { p: 'city-brick',       rp: [19, 14],  ra: [61, 56],  max: '73.7%' },
+  { p: 'jc3iedm-mio',      rp: [267, 37], ra: [267, 37], max: '13.9%' },
+  { p: 'jc3iedm-brick',    rp: [75, 31],  ra: [75, 31],  max: '41.3%' },
+  { p: 'jc3iedm-facility', rp: [43, 43],  ra: [43, 43],  max: '100%' },
+];
+
+const bestPerPair = [
+  { p: 'thinkhome-brick',  pub: ['AML', 0.774],       cf: ['AML', 0.873],      chg: 'unchanged', dir: 'flat' },
+  { p: 'brick-smartenv',   pub: ['LogMap', 0.829],    cf: ['LogMapLt', 0.839], chg: 'new leader', dir: 'up' },
+  { p: 'city-brick',       pub: ['LogMap', 0.757],    cf: ['AML', 0.839],      chg: 'new leader', dir: 'up' },
+  { p: 'jc3iedm-mio',      pub: ['LogMapLLM', 0.928], cf: ['ALOD2Vec', 0.886], chg: 'new leader; only pair where the best F1 drops', dir: 'down' },
+  { p: 'jc3iedm-brick',    pub: ['LogMapLt', 0.819],  cf: ['AML', 0.949],      chg: 'new leader (tied with Matcha)', dir: 'up' },
+  { p: 'jc3iedm-facility', pub: ['LogMap', 0.977],    cf: ['LogMap', 0.977],   chg: 'unchanged (no individuals)', dir: 'flat' },
+];
+---
+
+<Base
+  title="TBox-only ablation"
+  description="Reported analysis: how the DISO-OAEI Task 1 baselines change when individual–individual correspondences are removed from alignments and references and everything is rescored."
+>
+  <div class="abl">
+    <div class="page-head">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href={withBase('/')}>Home</a><span class="sep" aria-hidden="true">/</span>
+          <a href={withBase('/baselines/')}>Baselines</a><span class="sep" aria-hidden="true">/</span>
+          <span aria-current="page">TBox-only ablation</span>
+        </nav>
+        <h1>The TBox-only scoring ablation</h1>
+        <p class="lead">
+          The published baselines score every named-entity equivalence in the silver references,
+          including <code>owl:NamedIndividual</code> pairs. This reported analysis removes every
+          cell whose entities include a pure individual — from both the matcher alignments and
+          the references — and rescores everything with the production metric. The published
+          tables remain the headline; the gap between the two views is itself a finding about
+          how much of Task 1 is an instance-matching test.
+        </p>
+      </div>
+    </div>
+
+    <section class="section" style="border-top:none;" aria-labelledby="tldr-h">
+      <div class="container">
+        <h2 id="tldr-h" class="sr-only">Key numbers</h2>
+        <div class="tldr" role="list">
+          <div role="listitem"><span class="n">488 → 190</span><span class="l">|R⁺≈| after removing individual pairs (−61%)</span></div>
+          <div role="listitem"><span class="n">267 → 37</span><span class="l">jc3iedm-mio reference (86% was individuals)</span></div>
+          <div role="listitem"><span class="n">AML ↑ 1st</span><span class="l">from 3rd; LogMap drops to 2nd</span></div>
+          <div role="listitem"><span class="n">58 / 58</span><span class="l">matcher×pair rows independently re-verified at 10⁻⁹</span></div>
+        </div>
+        <div class="notice" style="margin-top:1.4rem;">
+          <span aria-hidden="true">ℹ</span>
+          <span>
+            <strong>Method anchor:</strong> fed the <em>unfiltered</em> files, the ablation harness
+            reproduces the published baselines exactly (all 13 matchers, micro and macro, both
+            references) — so every difference below is caused by the individual-cell filter and
+            nothing else.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="slope-h">
+      <div class="container">
+        <p class="kicker">Task 1 — comparable set</p>
+        <h2 id="slope-h">Rank movement (8 matchers, all 6 pairs)</h2>
+        <p class="section-lede">
+          Micro-F1 against R⁺<sub>≈</sub>. The LogMap family's published lead rests substantially on
+          matching the jc3iedm-mio individuals (91% of LogMap's true positives there), while every
+          other matcher's recall was capped by a denominator dominated by cells they never attempt.
+        </p>
+        <div class="slope-wrap">
+          <svg viewBox="-55 0 750 330" width="750" role="img" aria-label="Slope chart comparing published and TBox-only micro F1 for the eight full-coverage matchers. AML rises from 0.499 to 0.892 taking first place; LogMap falls from 0.858 to 0.788; LogMapLt rises from 0.549 to 0.783; BertMapLt from 0.350 to 0.691; Matcha from 0.463 to 0.688; SecureBertMap from 0.335 to 0.676; BertMap from 0.325 to 0.658; CySecBertMap from 0.324 to 0.657.">
+            <text x="150" y="18" text-anchor="end" class="axis">PUBLISHED</text>
+            <text x="490" y="18" text-anchor="start" class="axis">TBOX-ONLY</text>
+            <g stroke-width="2" fill="none">
+              <line x1="155" y1="48.9" x2="485" y2="80.4" class="loss"></line>
+              <line x1="155" y1="187.9" x2="485" y2="82.6" class="gain" opacity=".75"></line>
+              <line x1="155" y1="210.4" x2="485" y2="123.7" class="gain"></line>
+              <line x1="155" y1="226.6" x2="485" y2="167.4" class="gain" opacity=".75"></line>
+              <line x1="155" y1="277.4" x2="485" y2="168.7" class="gain" opacity=".75"></line>
+              <line x1="155" y1="284.2" x2="485" y2="175.3" class="gain" opacity=".55"></line>
+              <line x1="155" y1="288.7" x2="485" y2="183.6" class="gain" opacity=".55"></line>
+              <line x1="155" y1="289.2" x2="485" y2="183.7" class="gain" opacity=".55"></line>
+            </g>
+            <g class="lbl">
+              <text x="148" y="52.9" text-anchor="end">LogMap · 0.858</text>
+              <text x="148" y="191.9" text-anchor="end">LogMapLt · 0.549</text>
+              <text x="148" y="214.4" text-anchor="end">AML · 0.499</text>
+              <text x="148" y="230.6" text-anchor="end">Matcha · 0.463</text>
+              <text x="148" y="281.4" text-anchor="end">BertMapLt · 0.350</text>
+              <text x="148" y="288.2" text-anchor="end" opacity=".75">SecureBertMap · 0.335</text>
+              <text x="148" y="300.2" text-anchor="end" opacity=".75">BertMap 0.325 · CySec 0.324</text>
+              <text x="492" y="86.6" text-anchor="start" class="strong">AML · 0.892</text>
+              <text x="492" y="98.4" text-anchor="start">LogMap · 0.788</text>
+              <text x="492" y="127.7" text-anchor="start">LogMapLt · 0.783</text>
+              <text x="492" y="171.4" text-anchor="start">BertMapLt · 0.691</text>
+              <text x="492" y="183.9" text-anchor="start">Matcha · 0.688</text>
+              <text x="492" y="196.6" text-anchor="start" opacity=".75">SecureBertMap · 0.676</text>
+              <text x="492" y="209.2" text-anchor="start" opacity=".75">BertMap 0.658 · CySec 0.657</text>
+            </g>
+            <g class="pt">
+              <circle cx="155" cy="48.9" r="4"></circle><circle cx="155" cy="187.9" r="4"></circle><circle cx="155" cy="210.4" r="4"></circle><circle cx="155" cy="226.6" r="4"></circle><circle cx="155" cy="277.4" r="4"></circle><circle cx="155" cy="284.2" r="4"></circle><circle cx="155" cy="288.7" r="4"></circle><circle cx="155" cy="289.2" r="4"></circle>
+              <circle cx="485" cy="80.4" r="4"></circle><circle cx="485" cy="82.6" r="4"></circle><circle cx="485" cy="123.7" r="4"></circle><circle cx="485" cy="167.4" r="4"></circle><circle cx="485" cy="168.7" r="4"></circle><circle cx="485" cy="175.3" r="4"></circle><circle cx="485" cy="183.6" r="4"></circle><circle cx="485" cy="183.7" r="4"></circle>
+            </g>
+          </svg>
+        </div>
+
+        <h3 style="margin-top:2.4rem;">Full aggregate comparison</h3>
+        <p class="section-lede">
+          Micro-averaged against R⁺<sub>≈</sub> (the headline). The two coverage sets stay separate,
+          as on the <a href={withBase('/baselines/')}>baselines page</a>.
+        </p>
+        <div class="table-wrap">
+          <table class="sortable">
+            <thead>
+              <tr>
+                <th data-col="0">Matcher</th>
+                <th class="num" data-col="1">Published P</th><th class="num" data-col="2">Published R</th><th class="num" data-col="3">Published F1</th>
+                <th class="num" data-col="4">TBox-only P</th><th class="num" data-col="5">TBox-only R</th><th class="num" data-col="6">TBox-only F1</th>
+                <th data-nosort>Δ F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              {full.map((r) => (
+                <tr>
+                  <td>{r.m}</td>
+                  <td class="num">{f3(r.pub[0])}</td><td class="num">{f3(r.pub[1])}</td><td class="num">{f3(r.pub[2])}</td>
+                  <td class="num">{f3(r.cf[0])}</td><td class="num">{f3(r.cf[1])}</td>
+                  <td class="num">{r.best ? <span class="best">{f3(r.cf[2])}</span> : f3(r.cf[2])}</td>
+                  <td><span class={`chip ${r.dir}`}>{r.dir === 'up' ? '▲' : '▼'} {r.d}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" style="margin-top:1rem;">
+          <table>
+            <thead>
+              <tr><th>Matcher (JC3IEDM pairs only, n=2)</th><th class="num">Published F1</th><th class="num">TBox-only F1</th><th>Δ F1</th></tr>
+            </thead>
+            <tbody>
+              {partial.map((r) => (
+                <tr>
+                  <td>{r.m}</td>
+                  <td class="num">{f3(r.pub)}</td>
+                  <td class="num">{r.best ? <span class="best">{f3(r.cf)}</span> : f3(r.cf)}</td>
+                  <td><span class={`chip ${r.dir}`}>{r.dir === 'up' ? '▲' : '▼'} {r.d}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="shrink-h">
+      <div class="container">
+        <p class="kicker">The filter</p>
+        <h2 id="shrink-h">Reference shrinkage</h2>
+        <p class="section-lede">
+          Cells are removed when either entity is a pure <code>owl:NamedIndividual</code>
+          (punned entities — also declared as classes — count as terminological and are kept).
+          The last column is the maximum recall available <em>today</em>, on the published
+          references, to a system that emits no individual mappings.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Pair</th>
+                <th class="num">|R⁺≈| published</th><th class="num">|R⁺≈| TBox-only</th>
+                <th class="num">|R≈| published</th><th class="num">|R≈| TBox-only</th>
+                <th class="num">Max recall for a TBox-only system</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shrink.map((r) => (
+                <tr>
+                  <td class="mono">{r.p}</td>
+                  <td class="num">{r.rp[0]}</td><td class="num">{r.rp[1]}</td>
+                  <td class="num">{r.ra[0]}</td><td class="num">{r.ra[1]}</td>
+                  <td class="num">{r.max}</td>
+                </tr>
+              ))}
+              <tr>
+                <td><strong>Total</strong></td>
+                <td class="num"><strong>488</strong></td><td class="num"><strong>190</strong></td>
+                <td class="num"><strong>609</strong></td><td class="num"><strong>307</strong></td>
+                <td class="num">38.9% overall</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:2rem;">Best matcher per pair</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Pair</th><th>Published best</th><th class="num">F1</th><th>TBox-only best</th><th class="num">F1</th><th>Change</th></tr>
+            </thead>
+            <tbody>
+              {bestPerPair.map((r) => (
+                <tr>
+                  <td class="mono">{r.p}</td>
+                  <td>{r.pub[0]}</td><td class="num">{f3(r.pub[1] as number)}</td>
+                  <td>{r.cf[0]}</td><td class="num">{f3(r.cf[1] as number)}</td>
+                  <td><span class={`chip ${r.dir}`}>{r.chg}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="why-h">
+      <div class="container">
+        <p class="kicker">Interpretation</p>
+        <h2 id="why-h">Why both views are published</h2>
+        <p class="section-lede" style="max-width:72ch;">
+          Both boards are legitimate — they answer different questions. The published semantics
+          score the references as they are, in which the JC3IEDM pairs are substantially an
+          <em>instance-matching</em> test: the individual cells are quasi-terminological content
+          (country and category-code enumeration individuals, QUDT/OWL-Time units) that these
+          ontologies happen to model as <code>owl:NamedIndividual</code>. The TBox-only view shows
+          what remains once that dimension is removed: schema-matching quality the published board
+          partly masks — the BERT-family systems' apparently poor recall hides competent schema
+          matching, and the podium reorders on four of six pairs. Participants should read the
+          <a href={withBase('/tasks/global/')}>task documentation</a> carefully: individuals <strong>are</strong>
+          scored, and a system that strips assertional mappings forfeits up to 86% of a pair's
+          recall (see the table above).
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="prov-h">
+      <div class="container">
+        <h2 id="prov-h" style="font-size:1.05rem;">Provenance</h2>
+        <p style="font-size:0.88rem; color:var(--ink-3); max-width:76ch;">
+          Computed by filtering pure-individual cells from both the matcher alignments and the
+          references, then rescoring on the production metric's unchanged code path. Entity typing
+          was taken from the published OWL files (pure individual = <code>NamedIndividual</code> ∧
+          ¬<code>Class</code> ∧ ¬<code>ObjectProperty</code> ∧ ¬<code>DatatypeProperty</code>; e.g.
+          Brick: 6,363 pure, 2,193 punned kept). Verified independently: all 58 matcher×pair rows
+          were reproduced from the original alignment files with a separate set-based
+          implementation, agreeing to 10⁻⁹, and the unfiltered control reproduces the published
+          baselines exactly. The full result files (per-pair detail, aggregates, and the filter
+          log) are part of the supplementary materials (available at track launch); the published
+          baselines are on the <a href={withBase('/baselines/')}>baselines page</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .abl {
+    --gain: var(--ok);
+    --gain-soft: var(--ok-soft);
+    --loss: #b91c1c;
+    --loss-soft: #fee2e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .abl {
+      --loss: #f87171;
+      --loss-soft: #391414;
+    }
+  }
+  :global(:root[data-theme='dark']) .abl {
+    --loss: #f87171;
+    --loss-soft: #391414;
+  }
+  :global(:root[data-theme='light']) .abl {
+    --loss: #b91c1c;
+    --loss-soft: #fee2e2;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .tldr {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+  }
+  .tldr > div { background: var(--bg-raised); padding: 1rem 1.1rem; }
+  .tldr .n {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .tldr .l { font-size: 0.8rem; color: var(--ink-3); }
+
+  .chip {
+    display: inline-block;
+    border-radius: 99px;
+    padding: 0.05rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .chip.up { background: var(--gain-soft); color: var(--gain); }
+  .chip.down { background: var(--loss-soft); color: var(--loss); }
+  .chip.flat { background: var(--bg-sunken); color: var(--ink-3); }
+
+  .slope-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    background: var(--bg-raised);
+    padding: 1rem;
+  }
+  .slope-wrap svg { display: block; max-width: 100%; height: auto; }
+  .slope-wrap .axis { font: 600 12px var(--font-mono); fill: var(--ink-3); letter-spacing: 0.06em; }
+  .slope-wrap .lbl text { font: 500 12px var(--font-text); fill: var(--ink-2); }
+  .slope-wrap .lbl .strong { font-weight: 700; fill: var(--ink); }
+  .slope-wrap line.gain { stroke: var(--gain); }
+  .slope-wrap line.loss { stroke: var(--loss); }
+  .slope-wrap .pt circle { fill: var(--accent); }
+</style>

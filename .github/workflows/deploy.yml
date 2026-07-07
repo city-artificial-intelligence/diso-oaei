@@ -1,0 +1,65 @@
+# Builds the Astro site in site/ and deploys it to GitHub Pages.
+# Set repository's' "Build and deployment" to GitHub actions 
+# (not via a branch) to servce this site
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Live-leaderboard refresh (requires the CODABENCH_T1_COMPETITION /
+  # CODABENCH_T2_COMPETITION repository variables; see guides/CODABENCH_SETUP.md §6).
+  # NB: `schedule` must sit at this indent level, directly under `on:`.
+  schedule:
+    - cron: '0 */6 * * *' # every six hours
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Fetch live CodaBench leaderboard (no-op until repo variables are set)
+        working-directory: .
+        env:
+          CODABENCH_T1_COMPETITION: ${{ vars.CODABENCH_T1_COMPETITION }}
+          CODABENCH_T2_COMPETITION: ${{ vars.CODABENCH_T2_COMPETITION }}
+        run: python3 .github/scripts/fetch_codabench.py
+      - name: Build
+        run: npm run build
+      - name: Install Playwright (for the accessibility audit)
+        run: npx playwright install --with-deps chromium
+      - name: Accessibility audit (axe-core, light + dark themes)
+        run: npm run a11y
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

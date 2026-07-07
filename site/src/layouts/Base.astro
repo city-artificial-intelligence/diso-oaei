@@ -1,0 +1,99 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { withBase } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const fullTitle = title === 'DISO-OAEI' ? 'DISO-OAEI — Defence, Intelligence and Security Ontology Matching' : `${title} · DISO-OAEI`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      // Theme boot: runs before paint. Manual override in localStorage wins;
+      // otherwise the system preference applies via CSS. JS-only UI is
+      // revealed by the `js` class so the site works fully without scripts.
+      (function () {
+        document.documentElement.classList.add('js');
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <Header pathname={Astro.url.pathname} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Progressive enhancement: sortable data tables.
+      // Tables opt in with class "sortable"; headers become buttons with
+      // aria-sort. Without JS the tables are plain, fully readable HTML.
+      function enhance(table: HTMLTableElement) {
+        const ths = Array.from(table.querySelectorAll<HTMLTableCellElement>('thead th'));
+        const tbody = table.querySelector('tbody');
+        if (!tbody) return;
+        ths.forEach((th, domIdx) => {
+          if (th.dataset.nosort !== undefined) return;
+          // grouped (multi-row) headers set data-col explicitly; simple headers fall back to DOM order
+          const idx = th.dataset.col !== undefined ? Number(th.dataset.col) : domIdx;
+          const label = th.textContent?.trim() ?? '';
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.append(...Array.from(th.childNodes));
+          btn.setAttribute('aria-label', `Sort by ${label}`);
+          th.append(btn);
+          th.classList.add('sortable');
+          btn.addEventListener('click', () => {
+            const dir = th.getAttribute('aria-sort') === 'descending' ? 'ascending' : 'descending';
+            ths.forEach((h) => h.removeAttribute('aria-sort'));
+            th.setAttribute('aria-sort', dir);
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const numeric = rows.every((r) => {
+              const c = r.cells[idx]?.textContent?.trim() ?? '';
+              return c === '' || c === '—' || c === '-' || !Number.isNaN(parseFloat(c.replace(/[^0-9.eE+-]/g, '')));
+            });
+            rows.sort((a, b) => {
+              const av = a.cells[idx]?.textContent?.trim() ?? '';
+              const bv = b.cells[idx]?.textContent?.trim() ?? '';
+              let cmp;
+              if (numeric) {
+                const an = parseFloat(av.replace(/[^0-9.eE+-]/g, ''));
+                const bn = parseFloat(bv.replace(/[^0-9.eE+-]/g, ''));
+                cmp = (Number.isNaN(an) ? -Infinity : an) - (Number.isNaN(bn) ? -Infinity : bn);
+              } else {
+                cmp = av.localeCompare(bv);
+              }
+              return dir === 'ascending' ? cmp : -cmp;
+            });
+            rows.forEach((r) => tbody.append(r));
+          });
+        });
+      }
+      document.querySelectorAll<HTMLTableElement>('table.sortable').forEach(enhance);
+    </script>
+  </body>
+</html>

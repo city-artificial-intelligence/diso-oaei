@@ -1,0 +1,13 @@
+# build outputs
+node_modules/
+dist/
+.astro/
+
+# assets copied from the repo root by scripts/copy-assets.mjs (regenerated on every build)
+public/data/
+public/ontologies/
+public/tasks/
+public/scripts/
+public/leaderboard.json
+public/LICENSE
+public/CNAME

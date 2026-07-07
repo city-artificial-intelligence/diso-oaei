@@ -1,0 +1,48 @@
+{
+ "_provenance": "Best-per-pair slice of the DISO-OAEI per-system coherence matrix: TBox-level coherence of the merged ontology pair under the per-pair best system's alignment (whole-merge method; individuals removed before reasoning; complete reasoner JFact, else HermiT; ROBOT 1.9.10). Extracted 2026-07-04 from the organisers' coherence-eval results; the full per-system matrix (all matchers x methods x reasoners, with with-ABox flags) is published in the supplementary materials at track launch.",
+ "pairs": {
+  "brick-smartenv": {
+   "matcher": "LogMap",
+   "coherent": true,
+   "unsat_classes": 0,
+   "named_classes": 2463,
+   "complete_reasoner": "JFact"
+  },
+  "city-brick": {
+   "matcher": "LogMap",
+   "coherent": true,
+   "unsat_classes": 0,
+   "named_classes": 2818,
+   "complete_reasoner": "JFact"
+  },
+  "jc3iedm-brick": {
+   "matcher": "LogMapLt",
+   "coherent": true,
+   "unsat_classes": 0,
+   "named_classes": 5226,
+   "complete_reasoner": "JFact"
+  },
+  "jc3iedm-facility": {
+   "matcher": "LogMap",
+   "coherent": true,
+   "unsat_classes": 0,
+   "named_classes": 3013,
+   "complete_reasoner": "JFact"
+  },
+  "jc3iedm-mio": {
+   "matcher": "LogMapLLM",
+   "coherent": true,
+   "unsat_classes": 0,
+   "named_classes": 3544,
+   "complete_reasoner": "JFact"
+  },
+  "thinkhome-brick": {
+   "matcher": "AML",
+   "coherent": false,
+   "unsat_classes": 1123,
+   "named_classes": 3413,
+   "complete_reasoner": "HermiT",
+   "note": "JFact does not terminate on Brick qudt datatypes; HermiT value is a genuine complete classification"
+  }
+ }
+}

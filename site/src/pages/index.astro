@@ -1,0 +1,347 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import Base from '../layouts/Base.astro';
+import LatticeViz from '../components/LatticeViz.astro';
+import { CODABENCH_URL, CODABENCH_T2_URL, LIVE_RESULTS_REL, HF_DATASET, withBase } from '../config';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+
+// Live leaderboard snapshot (CI-written once the CodaBench competition is
+// live; see guides/CODABENCH_SETUP.md). Absent file → the section is omitted.
+type LiveRow = { system: string; team?: string; scores: Record<string, number> };
+const livePath = path.join(ROOT, LIVE_RESULTS_REL);
+const live: { task1_global?: LiveRow[]; task2_ranking?: LiveRow[]; competition_url?: string } | null =
+  fs.existsSync(livePath) ? JSON.parse(fs.readFileSync(livePath, 'utf8')) : null;
+const top5 = (rows: LiveRow[] | undefined, key: string) =>
+  (rows ?? []).slice().sort((a, b) => (b.scores[key] ?? 0) - (a.scores[key] ?? 0)).slice(0, 5);
+const liveT1 = top5(live?.task1_global, 'micro_F1');
+const liveT2 = top5(live?.task2_ranking, 'macro_mrr');
+const portal = live?.competition_url ?? CODABENCH_URL;
+const f3 = (x: number | undefined) => (typeof x === 'number' ? x.toFixed(3) : '—');
+
+// The 2026 datasets are published on the Hugging Face Hub (OAEI-ML org) — the
+// canonical download location. SHA-256 values below were computed from the
+// bytes actually served by huggingface.co on 7 July 2026 and verified to
+// contain the same data as the repository copies (the zips are repacked, so
+// their hashes differ from the old repo archives; the contents match).
+// To re-verify: curl -sL <url> | sha256sum
+const downloads = [
+  {
+    href: `${HF_DATASET}/resolve/main/archives/ontologies.zip`,
+    name: 'ontologies.zip',
+    what: 'The 10 task ontologies (OWL)',
+    hash: '8ff0a5fa64ff3ee5c05601b7618d471ea12f36018e2f0cf8c511c9d47af2777d',
+  },
+  {
+    href: `${HF_DATASET}/resolve/main/archives/repaired_silver_refs.zip`,
+    name: 'repaired_silver_refs.zip',
+    what: 'Task 1 headline references R⁺≈ (6 pairs)',
+    hash: 'e885b1a9f2a5e39c6529406860db12a4f8ae6e4961f790d2ed919070a9f0a4c8',
+  },
+  {
+    href: `${HF_DATASET}/resolve/main/archives/unrepaired_silver_refs.zip`,
+    name: 'unrepaired_silver_refs.zip',
+    what: 'Task 1 secondary references R≈ (6 pairs)',
+    hash: 'bd50b4b6472ae790b4c4e949172de8325bead20951a337eb010bb53f948b7c40',
+  },
+  {
+    href: `${HF_DATASET}/resolve/main/pools/uco-stix/pools.jsonl`,
+    name: 'pools/uco-stix/pools.jsonl',
+    what: 'Task 2 candidate pools — uco-stix (217 queries)',
+    hash: 'dc375cff4d92e30caf7f54f2cb58036541c7d0b8eb82e00a8cb3c1cb9570d096',
+  },
+  {
+    href: `${HF_DATASET}/resolve/main/pools/stix-d3fend/pools.jsonl`,
+    name: 'pools/stix-d3fend/pools.jsonl',
+    what: 'Task 2 candidate pools — stix-d3fend (73 queries)',
+    hash: '5c50fae542a4df49c5cf12e66a24c40b489bfb279909a8f30d08ec170896df6b',
+  },
+];
+
+const timeline = [
+  { date: '30 June 2026', what: 'Provisional Materials Released', state: 'done' },
+  { date: '6 July 2026', what: 'Finalised Datasets Published', state: 'done' },
+  { date: '12 July 2026', what: 'Competition Starts, Evaluation + Leaderboard Opens', state: 'live' },
+  { date: '1 September 2026', what: 'Evaluation Closes', state: '' },
+  { date: '6 September 2026', what: 'Competition Ends, Evaluation Results Reported (grace period until 12 September)', state: '' },
+];
+
+const ontologies = [
+  { name: 'UCO', dom: 'Cyber security', c: '#1a9cc9' },
+  { name: 'STIX', dom: 'Cyber security', c: '#1a9cc9' },
+  { name: 'D3FEND', dom: 'Cyber security', c: '#1a9cc9' },
+  { name: 'JC3IEDM', dom: 'Information exchange', c: '#b7861f' },
+  { name: 'mIO!', dom: 'Context awareness', c: '#b7861f' },
+  { name: 'Brick', dom: 'Smart buildings', c: '#9678f0' },
+  { name: 'ThinkHome', dom: 'Smart homes', c: '#9678f0' },
+  { name: 'SmartEnv', dom: 'Smart homes', c: '#9678f0' },
+  { name: 'CityOWL', dom: 'Smart cities', c: '#9678f0' },
+  { name: 'Facility', dom: 'Mid-level (CCO)', c: '#9678f0' },
+];
+---
+
+<Base
+  title="DISO-OAEI"
+  description="DISO-OAEI is an OAEI ontology-matching track over defence, intelligence, and security ontologies: a global alignment task across six pairs and a local equivalence ranking task with NIL abstention."
+>
+  <div class="hero">
+    <div class="container inner">
+      <div>
+        <p class="kicker">OAEI 2026 track</p>
+        <h1>Ontology matching for defence, intelligence &amp; security</h1>
+        <p class="lede">
+          DISO-OAEI distributes <strong>ten curated ontologies</strong> spanning cyber security,
+          command &amp; control, and smart environments — and evaluates matching systems on
+          <strong>two tasks</strong>: classic global alignment against a repaired silver standard,
+          and candidate ranking with explicit <strong>NIL abstention</strong>.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={withBase('/quickstart/')}>Get started</a>
+          <a class="btn btn-ghost" href="#downloads">Download the data</a>
+          <a class="btn btn-ghost" href={withBase('/primer/')}>New to ontology matching?</a>
+        </div>
+      </div>
+      <LatticeViz />
+    </div>
+  </div>
+
+  <div class="stat-band" role="list" aria-label="Track at a glance">
+    <div class="stat" role="listitem"><span class="n">10</span><span class="l">ontologies</span></div>
+    <div class="stat" role="listitem"><span class="n">2</span><span class="l">tasks</span></div>
+    <div class="stat" role="listitem"><span class="n">8</span><span class="l">ontology pairs</span></div>
+    <div class="stat" role="listitem"><span class="n">488</span><span class="l">silver-standard mappings</span></div>
+    <div class="stat" role="listitem"><span class="n">290</span><span class="l">ranking queries</span></div>
+  </div>
+
+  <section class="section" aria-labelledby="tasks-h">
+    <div class="container">
+      <p class="kicker">The tasks</p>
+      <h2 id="tasks-h">Two complementary evaluations</h2>
+      <p class="section-lede">
+        Task 1 measures whole-alignment quality the traditional OAEI way; Task 2 isolates
+        local decision quality — including knowing when <em>no</em> match exists.
+      </p>
+      <div class="card-grid">
+        <article class="card">
+          <div class="meta">
+            <span class="badge badge-accent">Task 1</span>
+            <span class="badge">6 pairs</span>
+            <span class="badge">references public</span>
+          </div>
+          <h3>Global alignment</h3>
+          <p>
+            Submit one full OAEI Alignment RDF per pair. Scored with partiality-corrected
+            precision, recall and F1 — micro- and macro-averaged — against the repaired
+            silver standard R⁺<sub>≈</sub>, with the unrepaired R<sub>≈</sub> as secondary.
+            Self-score locally with the provided tools.
+          </p>
+          <a class="card-link" href={withBase('/tasks/global/')}>Task description →</a>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge badge-accent">Task 2</span>
+            <span class="badge">2 pairs · 290 queries</span>
+            <span class="badge">references private</span>
+          </div>
+          <h3>Local equivalence ranking</h3>
+          <p>
+            For each source entity, rank a fixed 50-candidate pool best-first — placing the
+            NIL candidate early to abstain when no equivalent exists. Unsupervised;
+            scored organiser-side with Hits&#64;{'{'}1,3,5,10{'}'} and MRR, macro-averaged
+            over both pairs.
+          </p>
+          <a class="card-link" href={withBase('/tasks/ranking/')}>Task description →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {live && (liveT1.length > 0 || liveT2.length > 0) && (
+    <section class="section" aria-labelledby="live-h">
+      <div class="container">
+        <p class="kicker">Live leaderboard</p>
+        <h2 id="live-h">Top five per task</h2>
+        <p class="section-lede">
+          The best-performing submitted systems so far, pulled from the
+          {portal ? <a href={portal}>live leaderboard</a> : 'live leaderboard'} on a schedule.
+          Full standings and all submitted systems: <a href={withBase('/results/')}>results</a>.
+        </p>
+        <div class="card-grid">
+          {liveT1.length > 0 && (
+            <div class="card">
+              <h3>Task 1 — global alignment</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>#</th><th>System</th><th class="num">F1 (µ, R⁺≈)</th></tr></thead>
+                  <tbody>
+                    {liveT1.map((r, i) => (
+                      <tr><td class="num">{i + 1}</td><td>{r.system}</td><td class="num">{f3(r.scores.micro_F1)}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {liveT2.length > 0 && (
+            <div class="card">
+              <h3>Task 2 — equivalence ranking</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>#</th><th>System</th><th class="num">MRR (macro)</th></tr></thead>
+                  <tbody>
+                    {liveT2.map((r, i) => (
+                      <tr><td class="num">{i + 1}</td><td>{r.system}</td><td class="num">{f3(r.scores.macro_mrr)}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="downloads-h" id="downloads">
+    <div class="container">
+      <p class="kicker">Data</p>
+      <h2 id="downloads-h">Downloads</h2>
+      <p class="section-lede">
+        The 2026 datasets are published on the Hugging Face Hub:
+        <a href="https://huggingface.co/datasets/OAEI-ML/diso-oaei" class="mono">OAEI-ML/diso-oaei</a>
+        (the <a href="https://huggingface.co/datasets/OAEI-ML/diso-oaei/tree/v2026" class="mono">v2026</a> tag
+        pins this edition). Verify your copies against the SHA-256 checksums below — they were
+        computed from the bytes served by Hugging Face and re-verified against the repository's
+        canonical files.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>File</th><th>Contents</th><th>SHA-256</th></tr>
+          </thead>
+          <tbody>
+            {downloads.map((d) => (
+              <tr>
+                <td><a href={d.href} class="mono">{d.name}</a></td>
+                <td>{d.what}</td>
+                <td><code class="mono">{d.hash}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9rem; color:var(--ink-3);">
+        Prefer the CLI? <code class="mono">hf download OAEI-ML/diso-oaei --repo-type dataset</code>
+        (see the <a href={withBase('/quickstart/')}>quickstart</a>). Individual ontologies and
+        per-pair reference files are listed on the
+        <a href={withBase('/ontologies/')}>ontologies</a> and <a href={withBase('/tasks/global/')}>Task 1</a> pages.
+        Reference alignment creation methodology:
+        <a href="https://github.com/city-artificial-intelligence/diso-mappings">diso-mappings</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="timeline-h">
+    <div class="container">
+      <p class="kicker">Timeline</p>
+      <h2 id="timeline-h">2026 edition</h2>
+      <div class="notice">
+        <span aria-hidden="true">ℹ</span>
+        <span>
+          The 2026 datasets are <strong>final</strong>. Submit via CodaBench:
+          {' '}<a href={CODABENCH_URL}>Task 1 — Global Alignment</a> ·
+          {' '}<a href={CODABENCH_T2_URL}>Task 2 — Local Equivalence Ranking</a>.
+          Evaluation and the live leaderboard open on 12 July 2026. All dates are
+          00:00 <abbr title="Anywhere on Earth">AoE</abbr>.
+        </span>
+      </div>
+      <ol class="timeline">
+        {timeline.map((t) => (
+          <li class={t.state}>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="date">{t.date}</span>
+            <span class="what">{t.what}</span>
+            {t.state === 'done' && <span class="badge badge-ok">delivered</span>}
+            {t.state === 'live' && <span class="badge badge-soon">in progress</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="onto-h">
+    <div class="container">
+      <p class="kicker">The network</p>
+      <h2 id="onto-h">Ten DISO-curated ontologies</h2>
+      <p class="section-lede">
+        Drawn from the <a href="https://github.com/city-artificial-intelligence/diso">DISO collection</a> —
+        publicly available ontologies for defence, intelligence, national security, and
+        operationally adjacent domains.
+      </p>
+      <div class="onto-grid">
+        {ontologies.map((o) => (
+          <a class="onto-chip" href={withBase('/ontologies/')}>
+            <span class="name"><span class="swatch" style={`background:${o.c}`} aria-hidden="true"></span>{o.name}</span>
+            <span class="dom">{o.dom}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="cite-h">
+    <div class="container">
+      <p class="kicker">Citation</p>
+      <h2 id="cite-h">Citing DISO-OAEI</h2>
+      <p class="section-lede">
+        A Zenodo DOI for the track dataset is <span class="badge badge-soon">pending</span> and will be
+        published here once minted. Until then, cite the underlying collection:
+      </p>
+      <blockquote class="cite-box">
+        Dilworth, J., Cotovio, P., Herron, D., Pesquita, C., Jimenez-Ruiz, E., Cripps, P., &amp;
+        Dewdney, N. (2026). <em>DISO: Defence, Intelligence and Security Ontologies</em> (1.1.0)
+        [Data set]. Zenodo. <a href="https://doi.org/10.5281/zenodo.20059506">https://doi.org/10.5281/zenodo.20059506</a>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="people-h">
+    <div class="container">
+      <p class="kicker">People</p>
+      <h2 id="people-h">Organisers &amp; contributors</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Organisers</h3>
+          <p>
+            <a href="https://dilworth.io/">Jon Dilworth</a>,
+            <a href="https://pedrocotovio.github.io/">Pedro Cotovio</a>,
+            <a href="https://ernestojimenezruiz.github.io/">Ernesto Jimenez-Ruiz</a>, and
+            <a href="https://www.di.fc.ul.pt/~catiapesquita/">Catia Pesquita</a>.
+          </p>
+          <h3 style="margin-top:0.8rem;">Contributors</h3>
+          <p>
+            <a href="https://djherron.github.io/">Dave Herron</a>,
+            Paul Cripps, and Nigel Dewdney.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Acknowledgements</h3>
+          <p>
+            Supported by Turing Innovations Limited and
+            <a href="https://www.turing.ac.uk/science-innovation/defence-and-national-security">The
+            Alan Turing Institute's Defence and Security Programme</a> via the project
+            <a href="https://ernestojimenezruiz.github.io/projects/guard/">GUARD</a>.
+          </p>
+          <p>
+            Questions or corrections: open an issue on the
+            <a href="https://github.com/city-artificial-intelligence/diso-oaei">track repository</a>,
+            contact the organisers, or email
+            <a href="mailto:contact@oaei-ml.org">contact@oaei-ml.org</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

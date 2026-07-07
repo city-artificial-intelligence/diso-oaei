@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../config';
+---
+
+<Base title="Page not found" description="The page you were looking for does not exist on the DISO-OAEI site.">
+  <section class="section" style="border-top:none;">
+    <div class="container" style="text-align:center; padding-block: 4rem;">
+      <p class="kicker" style="justify-content:center;">404</p>
+      <h1>Page not found</h1>
+      <p style="color:var(--ink-2); max-width:44ch; margin-inline:auto;">
+        The page you were looking for doesn't exist — it may have moved during the site's
+        modernisation. Everything is reachable from the home page.
+      </p>
+      <div class="cta-row" style="justify-content:center; margin-top:1.4rem;">
+        <a class="btn btn-primary" href={withBase('/')}>Back to the track page</a>
+        <a class="btn btn-ghost" href={withBase('/quickstart/')}>Quickstart</a>
+      </div>
+    </div>
+  </section>
+</Base>

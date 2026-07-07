@@ -1,0 +1,288 @@
+---
+/**
+ * Interactive 3D view of the DISO-OAEI network — the "cyber lattice" staging
+ * (promoted from the animation drafts): the ten ontologies (nodes, coloured
+ * by subdomain, sized by pair degree) joined by the eight evaluation pairs
+ * (solid = Task 1 global alignment, dashed = Task 2 ranking), suspended
+ * inside a slowly rotating geodesic cage, with signal packets travelling
+ * along the pair edges in the subdomain colours.
+ * Progressive enhancement: without JavaScript (or WebGL) the same
+ * information is presented as text. Honours prefers-reduced-motion;
+ * rotation is pausable and drag-to-rotate is supported, as before.
+ */
+---
+
+<div class="viz-panel">
+  <div
+    id="onto-lattice"
+    role="img"
+    aria-label="Network diagram of the ten DISO ontologies inside a geodesic wireframe sphere, with signal packets travelling along the evaluation-pair edges. Task 1 pairs: ThinkHome–Brick, Brick–SmartEnv, City–Brick, JC3IEDM–mIO, JC3IEDM–Brick, and JC3IEDM–Facility. Task 2 pairs: UCO–STIX and STIX–D3FEND.">
+  </div>
+  <noscript>
+    <p style="color:#c3cedd; font-size:0.92rem;">
+      The ten track ontologies form a network joined by eight evaluation pairs —
+      six global-alignment pairs centred on Brick and JC3IEDM, plus the UCO–STIX
+      and STIX–D3FEND ranking pairs. (Enable JavaScript for the interactive 3D view.)
+    </p>
+  </noscript>
+  <div class="viz-legend">
+    <span><span class="swatch" style="background:#1a9cc9" aria-hidden="true"></span>Cyber security</span>
+    <span><span class="swatch" style="background:#b7861f" aria-hidden="true"></span>C2 &amp; context</span>
+    <span><span class="swatch" style="background:#9678f0" aria-hidden="true"></span>Built environment</span>
+    <span>— Task 1 pair</span>
+    <span>- - Task 2 pair</span>
+    <button id="viz-pause" class="viz-pause" type="button" aria-pressed="false" hidden>Pause rotation</button>
+  </div>
+</div>
+
+<style>
+  .viz-pause {
+    border: 1px solid rgb(255 255 255 / 0.3);
+    background: none;
+    color: #aab6c6;
+    border-radius: 6px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .viz-pause:hover { color: #fff; border-color: rgb(255 255 255 / 0.6); }
+  /* pan-y keeps vertical page scrolling on touch while horizontal drags rotate */
+  #onto-lattice { cursor: grab; touch-action: pan-y; }
+  #onto-lattice.dragging { cursor: grabbing; }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const host = document.getElementById('onto-lattice');
+  const pauseBtn = document.getElementById('viz-pause') as HTMLButtonElement | null;
+  if (host) {
+    try {
+      const COLORS: Record<string, number> = { cyber: 0x1a9cc9, c2: 0xb7861f, built: 0x9678f0 };
+      // Node layout as in the previous hero, scaled to sit inside the cage.
+      const S = 0.72;
+      const NODES: Array<[string, string, number, number, number]> = [
+        ['UCO', 'cyber', -2.3, 1.4, 0.3],
+        ['STIX', 'cyber', -1.1, 2.0, -0.4],
+        ['D3FEND', 'cyber', 0.1, 2.6, 0.5],
+        ['JC3IEDM', 'c2', 1.5, 1.1, 0.2],
+        ['mIO', 'c2', 2.7, 1.7, -0.5],
+        ['Brick', 'built', 0, -0.3, 0],
+        ['ThinkHome', 'built', -1.7, -1.0, 0.6],
+        ['SmartEnv', 'built', -0.4, -1.8, -0.8],
+        ['CityOWL', 'built', 1.2, -1.6, 0.7],
+        ['Facility', 'built', 2.2, -0.5, -0.6],
+      ];
+      const GLOBAL_EDGES = [
+        ['ThinkHome', 'Brick'], ['Brick', 'SmartEnv'], ['CityOWL', 'Brick'],
+        ['JC3IEDM', 'mIO'], ['JC3IEDM', 'Brick'], ['JC3IEDM', 'Facility'],
+      ];
+      const RANKING_EDGES = [['UCO', 'STIX'], ['STIX', 'D3FEND']];
+      const degree: Record<string, number> = {};
+      [...GLOBAL_EDGES, ...RANKING_EDGES].flat().forEach((n) => { degree[n] = (degree[n] ?? 0) + 1; });
+      const domOf: Record<string, string> = Object.fromEntries(NODES.map(([n, d]) => [n, d]));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+      camera.position.set(0, 0.4, 7.5);
+      camera.lookAt(0, 0, 0);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      host.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 1.35));
+      const key = new THREE.DirectionalLight(0xffffff, 1.3);
+      key.position.set(4, 6, 8);
+      scene.add(key);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // The geodesic cage (ambient, dim, with vertex dots)
+      const ico = new THREE.IcosahedronGeometry(2.55, 1);
+      const cageEdges = new THREE.EdgesGeometry(ico);
+      group.add(new THREE.LineSegments(
+        cageEdges,
+        new THREE.LineBasicMaterial({ color: 0x24384f, transparent: true, opacity: 0.55 })
+      ));
+      const cagePos = cageEdges.getAttribute('position') as THREE.BufferAttribute;
+      const seen = new Set<string>();
+      const cageVerts: THREE.Vector3[] = [];
+      for (let i = 0; i < cagePos.count; i++) {
+        const v = new THREE.Vector3().fromBufferAttribute(cagePos, i);
+        const k = `${v.x.toFixed(3)},${v.y.toFixed(3)},${v.z.toFixed(3)}`;
+        if (!seen.has(k)) { seen.add(k); cageVerts.push(v); }
+      }
+      group.add(new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints(cageVerts),
+        new THREE.PointsMaterial({ color: 0x44607f, size: 0.05 })
+      ));
+
+      // The DISO network inside the cage
+      const pos: Record<string, THREE.Vector3> = {};
+      NODES.forEach(([name, dom, x, y, z]) => {
+        const p = new THREE.Vector3(x * S, (y - 0.35) * S, z * S);
+        pos[name] = p;
+        const r = (0.15 + 0.026 * (degree[name] ?? 0)) * 0.9;
+        const mesh = new THREE.Mesh(
+          new THREE.SphereGeometry(r, 24, 24),
+          new THREE.MeshStandardMaterial({
+            color: COLORS[dom], roughness: 0.35, metalness: 0.1,
+            emissive: COLORS[dom], emissiveIntensity: 0.3,
+          })
+        );
+        mesh.position.copy(p);
+        group.add(mesh);
+
+        // Billboard label
+        const c = document.createElement('canvas');
+        const scale = 4;
+        const ctx = c.getContext('2d')!;
+        ctx.font = `500 ${12 * scale}px Inter, system-ui, sans-serif`;
+        const w = ctx.measureText(name).width;
+        c.width = w + 8 * scale;
+        c.height = 18 * scale;
+        const ctx2 = c.getContext('2d')!;
+        ctx2.font = `500 ${12 * scale}px Inter, system-ui, sans-serif`;
+        ctx2.fillStyle = '#dbe5f1';
+        ctx2.textBaseline = 'middle';
+        ctx2.fillText(name, 4 * scale, c.height / 2);
+        const tex = new THREE.CanvasTexture(c);
+        tex.anisotropy = 4;
+        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+        const aspect = c.width / c.height;
+        sprite.scale.set(0.28 * aspect, 0.28, 1);
+        sprite.position.copy(p).add(new THREE.Vector3(0, r + 0.22, 0));
+        group.add(sprite);
+      });
+
+      // The eight pair edges, brighter than the cage
+      type Edge = { a: string; b: string };
+      const edges: Edge[] = [];
+      const addEdge = (a: string, b: string, dashed: boolean) => {
+        const geo = new THREE.BufferGeometry().setFromPoints([pos[a], pos[b]]);
+        const mat = dashed
+          ? new THREE.LineDashedMaterial({ color: 0x9fb6cd, dashSize: 0.12, gapSize: 0.09, transparent: true, opacity: 0.9 })
+          : new THREE.LineBasicMaterial({ color: 0x7e97b1, transparent: true, opacity: 0.8 });
+        const line = new THREE.Line(geo, mat);
+        if (dashed) line.computeLineDistances();
+        group.add(line);
+        edges.push({ a, b });
+      };
+      GLOBAL_EDGES.forEach(([a, b]) => addEdge(a, b, false));
+      RANKING_EDGES.forEach(([a, b]) => addEdge(a, b, true));
+
+      // Signal packets travelling along the pair edges, coloured by the
+      // source ontology's subdomain
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+      const packets = edges.map((e, i) => {
+        const mesh = new THREE.Mesh(
+          new THREE.SphereGeometry(0.045, 12, 12),
+          new THREE.MeshBasicMaterial({ color: COLORS[domOf[e.a]] })
+        );
+        group.add(mesh);
+        return { e, u: rnd(), speed: 0.004 + rnd() * 0.005, fwd: i % 2 === 0, mesh };
+      });
+      const movePackets = (advance: boolean) => {
+        for (const p of packets) {
+          if (advance) {
+            p.u += p.speed;
+            if (p.u >= 1) { p.u = 0; p.fwd = !p.fwd; }
+          }
+          const from = pos[p.fwd ? p.e.a : p.e.b];
+          const to = pos[p.fwd ? p.e.b : p.e.a];
+          p.mesh.position.lerpVectors(from, to, p.u);
+        }
+      };
+
+      group.rotation.x = 0.16;
+
+      // Sizing. setSize resets the canvas bitmap, so every resize must be
+      // followed by a render or a paused/reduced-motion canvas goes blank
+      // (ResizeObserver also fires once on observe).
+      const size = () => {
+        const w = host.clientWidth || 480;
+        const h = Math.max(300, Math.min(430, w * 0.82));
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.render(scene, camera);
+      };
+      movePackets(false); // static pose for the first frame
+      size();
+      new ResizeObserver(size).observe(host);
+
+      // Rotation: slow auto-spin unless reduced motion or paused; drag to rotate.
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let spinning = !reduced;
+      let dragging = false;
+      let vx = 0;
+      let px = 0, py = 0;
+
+      if (pauseBtn && !reduced) {
+        pauseBtn.hidden = false;
+        pauseBtn.removeAttribute('aria-pressed'); // label swap carries the state
+        pauseBtn.addEventListener('click', () => {
+          spinning = !spinning;
+          pauseBtn.textContent = spinning ? 'Pause rotation' : 'Resume rotation';
+          if (spinning) tick();
+        });
+      }
+
+      host.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        host.classList.add('dragging');
+        px = e.clientX; py = e.clientY;
+        host.setPointerCapture(e.pointerId);
+      });
+      host.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - px, dy = e.clientY - py;
+        px = e.clientX; py = e.clientY;
+        group.rotation.y += dx * 0.006;
+        group.rotation.x = Math.max(-0.9, Math.min(0.9, group.rotation.x + dy * 0.004));
+        vx = dx * 0.006;
+        if (!spinning) renderer.render(scene, camera);
+      });
+      const up = () => {
+        dragging = false;
+        host.classList.remove('dragging');
+        if (Math.abs(vx) > 0.0004) tick(); // let momentum decay even when paused
+      };
+      host.addEventListener('pointerup', up);
+      host.addEventListener('pointercancel', up);
+
+      let loopRunning = false; // single-flight guard: only ever one rAF loop
+      const step = () => {
+        if (spinning || Math.abs(vx) > 0.0004) {
+          if (!dragging) {
+            group.rotation.y += spinning ? 0.0016 + vx : vx;
+            vx *= 0.95;
+          }
+          movePackets(spinning); // packets pause with the rotation
+          renderer.render(scene, camera);
+          requestAnimationFrame(step);
+        } else {
+          renderer.render(scene, camera);
+          loopRunning = false;
+        }
+      };
+      const tick = () => {
+        if (loopRunning) return;
+        loopRunning = true;
+        requestAnimationFrame(step);
+      };
+      renderer.render(scene, camera);
+      if (spinning) tick();
+
+      // Re-render at least once when the tab becomes visible again
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) renderer.render(scene, camera);
+      });
+    } catch {
+      host.innerHTML =
+        '<p style="color:#c3cedd; font-size:0.92rem;">The ten track ontologies form a network joined by eight evaluation pairs — six global-alignment pairs centred on Brick and JC3IEDM, plus the UCO–STIX and STIX–D3FEND ranking pairs.</p>';
+    }
+  }
+</script>

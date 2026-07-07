@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../config';
+---
+
+<Base
+  title="Accessibility Statement"
+  description="The DISO-OAEI website's accessibility statement: WCAG 2.2 AA target in both themes, keyboard operability, reduced-motion support, and automated checks on every build."
+>
+  <div class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={withBase('/')}>Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Accessibility</span>
+      </nav>
+      <h1>Accessibility Statement</h1>
+    </div>
+  </div>
+  <section class="section" style="border-top:none;">
+    <div class="container">
+      <div class="prose">
+        <p>
+          We aim to meet <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 level AA</a> in both the
+          light and dark themes. The site is keyboard-operable, uses semantic landmarks and a single
+          page heading per page, honours reduced-motion preferences, and all content is available
+          without JavaScript — interactive extras (table sorting, the 3D network, the primer demos)
+          degrade to plain tables and worked textual examples, and the manual theme override is the
+          one control with no non-JavaScript equivalent.
+        </p>
+        <p>
+          Accessibility is checked automatically on every build, in both themes. If you hit a
+          barrier, email <a href="mailto:contact@oaei-ml.org">contact@oaei-ml.org</a> — reports
+          from real users are especially valuable.
+        </p>
+        <h2>What this means in practice</h2>
+        <ul>
+          <li>Every page has a skip-to-content link, one <code>&lt;h1&gt;</code>, and
+            <code>header</code>/<code>nav</code>/<code>main</code>/<code>footer</code> landmarks.</li>
+          <li>All interactive controls — navigation, theme toggle, sortable table headers, and the
+            interactive demos — are reachable and operable by keyboard, with visible focus styles.</li>
+          <li>Colour is never the only carrier of meaning: chart marks carry direct labels,
+            table cells carry values, and status badges carry text.</li>
+          <li>Animations (including the 3D network on the home page) are disabled when your system
+            requests reduced motion, and the rotation can be paused at any time.</li>
+          <li>Mathematical notation is rendered server-side with KaTeX — no client scripts — and
+            wide tables scroll inside their own container rather than the page.</li>
+          <li>Without JavaScript, all content remains readable and navigable; the interactive demos
+            fall back to worked textual examples.</li>
+        </ul>
+        <h2>Automated checks</h2>
+        <p>
+          Every deployment runs an automated <a href="https://github.com/dequelabs/axe-core">axe-core</a>
+          audit across the site's pages in <em>both</em> the light and dark themes; the build fails
+          if violations are found. Automated checking cannot catch everything, so reports from real
+          users are especially valuable.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <Alignment>
+    <xml>yes</xml>
+    <level>0</level>
+    <type>??</type>
+    <onto1>http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl</onto1>
+    <onto2>http://www.cenitmio.es/ontologies/mIOmerged.owl</onto2>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MISCELLANEOUS-EQUIPMENT-TYPE-Rope"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Role"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Has_as_a_component"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Component"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Wall"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Walk"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CapabilityUnitOfMeasureCode"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Road"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MISCELLANEOUS-EQUIPMENT-TYPE-Rope"/>
+        <entity2 rdf:resource="http://ontologies.ezweb.morfeo-project.org/profile.owl#Role"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REFERENCE"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Preference"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Tank"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Task"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GROUP-ORGANISATION-TYPE-Refugee"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Refuge"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ROUTE"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Router"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Snow"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Show"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Uses"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#User"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Resting"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Resting"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/PersonalProfileDocument"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Mine"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Cinema"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Marker"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Market"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Combat"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Bar"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Scout"/>
+        <entity2 rdf:resource="http://xmlns.com/wordnet/1.6/Agent"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTION"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/service.owl#Operation"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Retail"/>
+        <entity2 rdf:resource="http://e-response.org/ontology/2006/20060815/e_response_buildings#Studio"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Is_part_of"/>
+        <entity2 rdf:resource="http://ontologies.ezweb.morfeo-project.org/profile.owl#Role"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TARGET"/>
+        <entity2 rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MISSION-CAPABILITY-Attack"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Avenue"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Action"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Is_loaded_on"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Walk"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Float"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Show"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CONTEXT-ELEMENT"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Source.owl#ContextSource"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTION-TASK-STATUS-Plan"/>
+        <entity2 rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#Object"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Location"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Square"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Type"/>
+        <entity2 rdf:resource="http://xmlns.com/wordnet/1.6/Person"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CAPABILITY-REFERENCE-ASSOCIATION-Is_amplified_by"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Amplifier"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Is_specified_by"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Individual"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Yes"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Permission"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Uses_as_a_reference"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Preference"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Construction"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Device"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Office"/>
+        <entity2 rdf:resource="http://e-response.org/ontology/2006/20060815/e_response_buildings#Garage"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FEATURE"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Parameter"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ROUTE"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Province"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Manufacturing"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Way"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTION-TASK-Plan"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Goal"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ROAD"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Street"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Weight"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Role.owl#Importance"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LOCATION"/>
+        <entity2 rdf:resource="http://ontologies.ezweb.morfeo-project.org/profile.owl#Situation"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Flat"/>
+        <entity2 rdf:resource="http://e-response.org/ontology/2006/20060815/e_response_buildings#Apartment"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Money"/>
+        <entity2 rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/price.owl#Currency"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Moving"/>
+        <entity2 rdf:resource="http://ontologies.ezweb.morfeo-project.org/reco.owl#Pattern"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GROUP-ORGANISATION-TYPE-Police_chief"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#StateOfMind"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Covering"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Casing"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#EXECUTIVE-MILITARY-ORGANISATION-TYPE-Supply"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Shop"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Demonstration"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Display"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#APPROACH-DIRECTION-Right"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Musical"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MILITARY-POST-TYPE-Scout"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Is_conveyance_for"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#PublicTransport"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Bank"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Block"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Release_point"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Network.owl#FreeOfCharge"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CAPABILITY"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Capacity"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#G-agent"/>
+        <entity2 rdf:resource="http://xmlns.com/wordnet/1.6/Agent"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Hospital_ship"/>
+        <entity2 rdf:resource="http://e-response.org/ontology/2006/20060815/e_response_buildings#Hospital"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#V-agent"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Blocking"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Block"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LIGHT"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/context_Environment.owl#Lighting"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Main"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Mains"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Provides_direction_for"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Direction"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Serves_as"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#Service"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VERTICAL-DISTANCE"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Distance"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AFGHAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_AF_AFGHANISTAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AMERIN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SR_SURINAME"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ANDORR"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_AD_ANDORRA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ANGOLA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_AO_ANGOLA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AUSTRA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_AU_AUSTRALIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AZERBA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_AZ_AZERBAIJAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BANGLA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_BD_BANGLADESH"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BEN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_BJ_BENIN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CAMERO"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_CM_CAMEROON"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CANADN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_CA_CANADA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CHADAT"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_TD_CHAD"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CHILD"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_CL_CHILE"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CON"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_CG_CONGO"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DEC"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#decade"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DEC"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#deco"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DECONT"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#deco"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#EGYPTN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_EG_EGYPT"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FIJIAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_FJ_FIJI"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FIJIAN-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_FJ_FIJI"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#FootSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT-1"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#FootSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT-2"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Foot"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT-2"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#FootSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FRANCO"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_FR_FRANCE"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Food"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#FoodService"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GERMAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_DE_GERMANY"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GERMAN-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_DE_GERMANY"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GPSCOM"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#GPS"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GPSMIL"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#GPS"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GREEN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_GL_GREENLAND"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GREENL"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_GL_GREENLAND"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GUYANS"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_GY_GUYANA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#HIGH"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#highway"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#HIGH-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#highway"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#HIGH-2"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#highway"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Hospital_ship"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Provider.owl#Hospital"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#INCH"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#InchSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#IND"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#indoor"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#INDIAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_IN_INDIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#IRAQI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_IQ_IRAQ"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#KAZAKH"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_KZ_KAZAKHSTAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#KENYAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_KE_KENYA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#KUWAIT"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_KW_KUWAIT"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LUXEMB"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#lux"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LUXEMB"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_LU_LUXEMBOURG"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Local"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#LocalService"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MALAY"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_MY_MALAYSIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MALAY-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_MY_MALAYSIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MALINK"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_ML_MALI"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_OM_OMAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#METEO"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Meter"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#METEO"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MICRON"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#micro"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MIL"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Mile"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MIL"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#MileSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MIL"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#milli"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MIL-1"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Mile"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MIL-1"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#milli"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MILE"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#MileSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MINU"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#minute"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MINUTE-1"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#minute"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MON"/>
+        <entity2 rdf:resource="http://www.w3.org/2006/time#Monday"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MONGOL"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_MN_MONGOLIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MONTEN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_ME_MONTENEGRO"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#NE-1"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#NE"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#NEPALI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_NP_NEPAL"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#NEW"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#newton"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#NIUEAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_NU_NIUE"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#OMANI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_OM_OMAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#OMANI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_RO_ROMANIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PAL"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_PW_PALAU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PALAUA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_PW_PALAU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PALAUN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_PW_PALAU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PER"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#permil"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PER-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_PE_PERU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PERUVN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_PE_PERU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Providing_security_services"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Service.owl#SecurityServices"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#RAD"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#radian"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#RATION"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#ratio"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#RETIRE-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/User.owl#retired"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#RWANDA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_RW_RWANDA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SAMOAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_WS_SAMOA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SAMOAN-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_WS_SAMOA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SAMOAP"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_WS_SAMOA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SECOND"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#secondSquare"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SINCHN"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Inch"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SLOVAK"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SK_SLOVAKIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SLOVAK-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SK_SLOVAKIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SOMALI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SO_SOMALIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SOMALI-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SO_SOMALIA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SOMAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_OM_OMAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SOTHO"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_LS_LESOTHO"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SUDANC"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_SD_SUDAN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SUNDAN"/>
+        <entity2 rdf:resource="http://www.w3.org/2006/time#Sunday"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TONGAN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_TO_TONGA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TONGAN-1"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_TO_TONGA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TONGAS"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_TO_TONGA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TSWANA"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_BW_BOTSWANA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TUVALN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_TV_TUVALU"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#UGANDN"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_UG_UGANDA"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VOLTAC"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#volt"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#WINCH"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Inch"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Way_point"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Location.owl#Way"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#YARD"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#YardSq"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#YEMENI"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Country.owl#Country_YE_YEMEN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Drug_storage"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Storage"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SECOND-1"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Image"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/OnlineChatAccount"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#W-1"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#W"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Group_-navy-"/>
+        <entity2 rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Foot"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FOOT-2"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Foot"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Provides_direction_for"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Direction"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SECOND"/>
+        <entity2 rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Main"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Device.owl#Mains"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Power_plant__nuclear"/>
+        <entity2 rdf:resource="http://e-response.org/ontology/2006/20060815/e_response_buildings#PowerPlant"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Revolution"/>
+        <entity2 rdf:resource="http://www.cenitmio.es/ontologies/Interface.owl#Resolution"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REFERENCE"/>
+        <entity2 rdf:resource="http://ontologies.ezweb.morfeo-project.org/reco.owl#Preference"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DirectionCode"/>
+        <entity2 rdf:resource="http://pervasive.semanticweb.org/ont/2004/06/geo-measurement#Direction"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+  </Alignment>
+</rdf:RDF>

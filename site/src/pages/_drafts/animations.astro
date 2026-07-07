@@ -1,0 +1,121 @@
+---
+import Base from '../../layouts/Base.astro';
+import RadarSweep from '../../components/drafts/RadarSweep.astro';
+import AlignmentBridge from '../../components/drafts/AlignmentBridge.astro';
+import CyberLattice from '../../components/drafts/CyberLattice.astro';
+
+// Internal preview page — deliberately NOT linked from the navigation. It
+// exists so alternative hero animations can be reviewed side by side without
+// touching the live homepage. Delete it (or promote a variant into
+// NetworkViz's place) once a direction is chosen.
+---
+
+<Base
+  title="Hero animation drafts"
+  description="Internal preview: alternative three.js hero animations for the DISO-OAEI homepage, themed to the track's domains."
+>
+  <div class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Animation drafts</span>
+      </nav>
+      <h1>Hero animation drafts</h1>
+      <p class="lead">
+        Internal preview, not linked from the navigation. Three alternative homepage animations —
+        each renders the actual DISO network (the ten named ontologies and the eight evaluation
+        pairs, exactly as the current hero does) in a different domain-flavoured style. All honour
+        reduced-motion preferences (static frame), can be paused, and degrade to text without
+        JavaScript or WebGL — the same contract as the current hero network.
+      </p>
+    </div>
+  </div>
+
+  <section class="section" style="border-top:none;" aria-labelledby="v1-h">
+    <div class="container">
+      <p class="kicker">Variant 1 · defence &amp; situation awareness</p>
+      <h2 id="v1-h">Situational picture</h2>
+      <p class="section-lede">
+        The ten ontologies as labelled contacts on a radar scope, clustered into subdomain
+        sectors (cyber east, C2/context north, built environment west) with the hubs — Brick and
+        JC3IEDM — nearer the centre, joined by the eight pair edges (solid = Task 1,
+        dashed = Task 2). The sweep beam makes each contact flare as it crosses. Calm and
+        recognisably defence-flavoured, while still reading as the real network.
+      </p>
+      <div class="draft-panel"><RadarSweep /></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="v2-h">
+    <div class="container">
+      <p class="kicker">Variant 2 · ontology matching</p>
+      <h2 id="v2-h">Correspondence traffic</h2>
+      <p class="section-lede">
+        The current hero's exact layout — ten labelled ontologies, sized by pair degree — but
+        alive: the eight evaluation pairs become lifted arcs that pulse, with correspondence
+        signals travelling along them (white for the six Task 1 pairs, gold for the two dashed
+        Task 2 pairs). The network sways gently instead of spinning. The most literal depiction
+        of what the track evaluates, anchored in the real network.
+      </p>
+      <div class="draft-panel"><AlignmentBridge /></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="v3-h">
+    <div class="container">
+      <p class="kicker">Variant 3 · cyber &amp; knowledge graphs</p>
+      <h2 id="v3-h">Cyber lattice <span class="badge badge-ok" style="vertical-align:middle;">promoted — now the live hero</span></h2>
+      <p class="section-lede">
+        The labelled DISO network suspended inside a slowly rotating geodesic cage — a
+        defensive-perimeter mood, closest in spirit to the cyber-threat-intelligence side of
+        the track — with signal packets travelling along the real pair edges in the subdomain
+        colours. This variant now runs on the homepage (as <code>LatticeViz</code>, with the
+        hero's drag-to-rotate and legend added); the copy below is the original draft.
+      </p>
+      <div class="draft-panel"><CyberLattice /></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="notes-h">
+    <div class="container">
+      <h2 id="notes-h" style="font-size:1.05rem;">Review notes</h2>
+      <ul style="max-width:70ch; color:var(--ink-2); font-size:0.95rem;">
+        <li>All three carry the same information as the current hero — node = named ontology
+          (coloured by subdomain, sized by pair degree), edge = evaluation pair, solid vs dashed =
+          Task 1 vs Task 2 — so any of them can replace it without losing meaning. They differ in
+          framing: radar scope, animated correspondence traffic, or a geodesic cage.</li>
+        <li>All three render on the hero's dark navy panel in both themes, like the current network.</li>
+        <li>Variant 2 keeps the previous hero's exact node layout, so it is the least disruptive swap;
+          variants 1 and 3 re-stage the network (flat scope / inside a cage).</li>
+        <li><strong>Variant 3 has been promoted</strong>: it runs on the homepage as
+          <code>components/LatticeViz.astro</code> (drag-to-rotate + legend added). The previous
+          hero is preserved unused at <code>components/NetworkViz.astro</code> for an easy revert;
+          this page can be deleted once the choice is settled.</li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  /* Shared styling for the draft panels: always-dark hero-style surface, as on
+     the homepage, so the animations read identically in both themes. */
+  .draft-panel {
+    background: linear-gradient(160deg, var(--brand-navy), #0a1626 85%);
+    border-radius: var(--radius-l);
+    padding: 1.2rem;
+  }
+  .draft-host { min-height: 18rem; }
+  .draft-host canvas { display: block; width: 100%; border-radius: var(--radius-m); }
+  .draft-fallback { color: #c3cedd; font-size: 0.92rem; margin: 0.4rem 0; }
+  .draft-controls { display: flex; justify-content: flex-end; margin-top: 0.6rem; }
+  .draft-pause {
+    border: 1px solid rgb(255 255 255 / 0.3);
+    background: none;
+    color: #c3cedd;
+    border-radius: 6px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .draft-pause:hover,
+  .draft-pause:focus-visible { color: #fff; border-color: rgb(255 255 255 / 0.6); }
+</style>

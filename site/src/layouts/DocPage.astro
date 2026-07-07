@@ -1,0 +1,49 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from './Base.astro';
+import { withBase } from '../config';
+
+interface Crumb {
+  href?: string;
+  label: string;
+}
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  lead?: string;
+  crumbs?: Crumb[];
+}
+const { id, title, description, lead, crumbs = [] } = Astro.props;
+
+const entry = await getEntry('docs', id);
+if (!entry) throw new Error(`DocPage: no docs entry with id "${id}"`);
+const { Content } = await render(entry);
+---
+
+<Base title={title} description={description}>
+  <div class="page-head">
+    <div class="container">
+      {crumbs.length > 0 && (
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href={withBase('/')}>Home</a>
+          {crumbs.map((c) => (
+            <>
+              <span class="sep" aria-hidden="true">/</span>
+              {c.href ? <a href={withBase(c.href)}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+            </>
+          ))}
+        </nav>
+      )}
+      <h1>{title}</h1>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+  </div>
+  <div class="section" style="border-top: none;">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </div>
+</Base>

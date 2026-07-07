@@ -1,0 +1,231 @@
+---
+/**
+ * Interactive 3D view of the DISO-OAEI network: ten ontologies (nodes,
+ * coloured by subdomain) joined by the eight evaluation pairs (edges;
+ * solid = Task 1 global alignment, dashed = Task 2 ranking).
+ * Progressive enhancement: without JavaScript (or WebGL) the same
+ * information is presented as text. Honours prefers-reduced-motion.
+ */
+---
+
+<div class="viz-panel">
+  <div
+    id="onto-net"
+    role="img"
+    aria-label="Network diagram of the ten DISO ontologies. Task 1 pairs: ThinkHome–Brick, Brick–SmartEnv, City–Brick, JC3IEDM–mIO, JC3IEDM–Brick, and JC3IEDM–Facility. Task 2 pairs: UCO–STIX and STIX–D3FEND.">
+  </div>
+  <noscript>
+    <p style="color:#c3cedd; font-size:0.92rem;">
+      The ten track ontologies form a network joined by eight evaluation pairs —
+      six global-alignment pairs centred on Brick and JC3IEDM, plus the UCO–STIX
+      and STIX–D3FEND ranking pairs. (Enable JavaScript for the interactive 3D view.)
+    </p>
+  </noscript>
+  <div class="viz-legend">
+    <span><span class="swatch" style="background:#1a9cc9" aria-hidden="true"></span>Cyber security</span>
+    <span><span class="swatch" style="background:#b7861f" aria-hidden="true"></span>C2 &amp; context</span>
+    <span><span class="swatch" style="background:#9678f0" aria-hidden="true"></span>Built environment</span>
+    <span>— Task 1 pair</span>
+    <span>- - Task 2 pair</span>
+    <button id="viz-pause" class="viz-pause" type="button" aria-pressed="false" hidden>Pause rotation</button>
+  </div>
+</div>
+
+<style>
+  .viz-pause {
+    border: 1px solid rgb(255 255 255 / 0.3);
+    background: none;
+    color: #aab6c6;
+    border-radius: 6px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .viz-pause:hover { color: #fff; border-color: rgb(255 255 255 / 0.6); }
+  /* pan-y keeps vertical page scrolling on touch while horizontal drags rotate */
+  #onto-net { cursor: grab; touch-action: pan-y; }
+  #onto-net.dragging { cursor: grabbing; }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const host = document.getElementById('onto-net');
+  const pauseBtn = document.getElementById('viz-pause') as HTMLButtonElement | null;
+  if (host) {
+    try {
+      const COLORS: Record<string, number> = { cyber: 0x1a9cc9, c2: 0xb7861f, built: 0x9678f0 };
+      const NODES: Array<[string, string, number, number, number]> = [
+        ['UCO', 'cyber', -2.3, 1.4, 0.3],
+        ['STIX', 'cyber', -1.1, 2.0, -0.4],
+        ['D3FEND', 'cyber', 0.1, 2.6, 0.5],
+        ['JC3IEDM', 'c2', 1.5, 1.1, 0.2],
+        ['mIO', 'c2', 2.7, 1.7, -0.5],
+        ['Brick', 'built', 0, -0.3, 0],
+        ['ThinkHome', 'built', -1.7, -1.0, 0.6],
+        ['SmartEnv', 'built', -0.4, -1.8, -0.8],
+        ['CityOWL', 'built', 1.2, -1.6, 0.7],
+        ['Facility', 'built', 2.2, -0.5, -0.6],
+      ];
+      const IDX = Object.fromEntries(NODES.map((n, i) => [n[0], i]));
+      const GLOBAL_EDGES = [
+        ['ThinkHome', 'Brick'], ['Brick', 'SmartEnv'], ['CityOWL', 'Brick'],
+        ['JC3IEDM', 'mIO'], ['JC3IEDM', 'Brick'], ['JC3IEDM', 'Facility'],
+      ];
+      const RANKING_EDGES = [ ['UCO', 'STIX'], ['STIX', 'D3FEND'] ];
+
+      const degree: Record<string, number> = {};
+      [...GLOBAL_EDGES, ...RANKING_EDGES].flat().forEach((n) => { degree[n] = (degree[n] ?? 0) + 1; });
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(0, 0.4, 8.2);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      host.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 1.35));
+      const key = new THREE.DirectionalLight(0xffffff, 1.6);
+      key.position.set(4, 6, 8);
+      scene.add(key);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const positions = NODES.map(([, , x, y, z]) => new THREE.Vector3(x, y - 0.35, z));
+
+      NODES.forEach(([name, dom], i) => {
+        const r = 0.17 + 0.028 * (degree[name] ?? 0);
+        const mat = new THREE.MeshStandardMaterial({
+          color: COLORS[dom],
+          roughness: 0.35,
+          metalness: 0.1,
+          emissive: COLORS[dom],
+          emissiveIntensity: 0.22,
+        });
+        const mesh = new THREE.Mesh(new THREE.SphereGeometry(r, 32, 32), mat);
+        mesh.position.copy(positions[i]);
+        group.add(mesh);
+
+        // Billboard label
+        const c = document.createElement('canvas');
+        const scale = 4;
+        const ctx = c.getContext('2d')!;
+        ctx.font = `500 ${13 * scale}px Inter, system-ui, sans-serif`;
+        const w = ctx.measureText(name).width;
+        c.width = w + 8 * scale;
+        c.height = 20 * scale;
+        const ctx2 = c.getContext('2d')!;
+        ctx2.font = `500 ${13 * scale}px Inter, system-ui, sans-serif`;
+        ctx2.fillStyle = '#dbe5f1';
+        ctx2.textBaseline = 'middle';
+        ctx2.fillText(name, 4 * scale, c.height / 2);
+        const tex = new THREE.CanvasTexture(c);
+        tex.anisotropy = 4;
+        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+        const aspect = c.width / c.height;
+        sprite.scale.set(0.34 * aspect, 0.34, 1);
+        sprite.position.copy(positions[i]).add(new THREE.Vector3(0, r + 0.28, 0));
+        group.add(sprite);
+      });
+
+      const addEdge = (a: string, b: string, dashed: boolean) => {
+        const geo = new THREE.BufferGeometry().setFromPoints([positions[IDX[a]], positions[IDX[b]]]);
+        const mat = dashed
+          ? new THREE.LineDashedMaterial({ color: 0x9fb6cd, dashSize: 0.14, gapSize: 0.1, transparent: true, opacity: 0.9 })
+          : new THREE.LineBasicMaterial({ color: 0x7e97b1, transparent: true, opacity: 0.75 });
+        const line = new THREE.Line(geo, mat);
+        if (dashed) line.computeLineDistances();
+        group.add(line);
+      };
+      GLOBAL_EDGES.forEach(([a, b]) => addEdge(a, b, false));
+      RANKING_EDGES.forEach(([a, b]) => addEdge(a, b, true));
+
+      group.rotation.x = 0.12;
+
+      // Sizing. setSize resets the canvas bitmap, so every resize must be
+      // followed by a render or a paused/reduced-motion canvas goes blank
+      // (ResizeObserver also fires once on observe).
+      const size = () => {
+        const w = host.clientWidth || 480;
+        const h = Math.max(300, Math.min(430, w * 0.82));
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.render(scene, camera);
+      };
+      size();
+      new ResizeObserver(size).observe(host);
+
+      // Rotation: slow auto-spin unless reduced motion or paused; drag to rotate.
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let spinning = !reduced;
+      let dragging = false;
+      let vx = 0;
+      let px = 0, py = 0;
+
+      if (pauseBtn && !reduced) {
+        pauseBtn.hidden = false;
+        pauseBtn.removeAttribute('aria-pressed'); // label swap carries the state
+        pauseBtn.addEventListener('click', () => {
+          spinning = !spinning;
+          pauseBtn.textContent = spinning ? 'Pause rotation' : 'Resume rotation';
+          if (spinning) tick();
+        });
+      }
+
+      host.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        host.classList.add('dragging');
+        px = e.clientX; py = e.clientY;
+        host.setPointerCapture(e.pointerId);
+      });
+      host.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - px, dy = e.clientY - py;
+        px = e.clientX; py = e.clientY;
+        group.rotation.y += dx * 0.006;
+        group.rotation.x = Math.max(-0.9, Math.min(0.9, group.rotation.x + dy * 0.004));
+        vx = dx * 0.006;
+        if (!spinning) renderer.render(scene, camera);
+      });
+      const up = () => {
+        dragging = false;
+        host.classList.remove('dragging');
+        if (Math.abs(vx) > 0.0004) tick(); // let momentum decay even when paused
+      };
+      host.addEventListener('pointerup', up);
+      host.addEventListener('pointercancel', up);
+
+      let loopRunning = false; // single-flight guard: only ever one rAF loop
+      const step = () => {
+        if (spinning || Math.abs(vx) > 0.0004) {
+          if (!dragging) {
+            group.rotation.y += spinning ? 0.0022 + vx : vx;
+            vx *= 0.95;
+          }
+          renderer.render(scene, camera);
+          requestAnimationFrame(step);
+        } else {
+          renderer.render(scene, camera);
+          loopRunning = false;
+        }
+      };
+      const tick = () => {
+        if (loopRunning) return;
+        loopRunning = true;
+        requestAnimationFrame(step);
+      };
+      renderer.render(scene, camera);
+      if (spinning) tick();
+
+      // Re-render at least once when the tab becomes visible again
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) renderer.render(scene, camera);
+      });
+    } catch {
+      host.innerHTML =
+        '<p style="color:#c3cedd; font-size:0.92rem;">The ten track ontologies form a network joined by eight evaluation pairs — six global-alignment pairs centred on Brick and JC3IEDM, plus the UCO–STIX and STIX–D3FEND ranking pairs.</p>';
+    }
+  }
+</script>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <Alignment>
+    <xml>yes</xml>
+    <level>0</level>
+    <type>??</type>
+    <onto1>http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl</onto1>
+    <onto2>https://brickschema.org/schema/1.4/Brick</onto2>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Apartment_building"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Apartment"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BETA"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/quantitykind/RadioactiveDecay"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SUPPRT"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Aid"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTIVE-1"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Active"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#CLOSE"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Close"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Status"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Status"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REST"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Rest"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AFGHAN"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/CCY_AFN"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VOLUME"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Volume"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VOLUME"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/quantitykind/Volume"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VOLUME"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Volume"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VOLUME"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#volume"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GROUND"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Ground"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BIT"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/BIT"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SAFE"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Safe"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Control_zone"/>
+        <entity2 rdf:resource="https://w3id.org/rec#AccessControlZone"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#YARD"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/YD"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ORGANISATION"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Organization"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Cart"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Cart"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AIR"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Air"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#AIR"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Air"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#School"/>
+        <entity2 rdf:resource="https://w3id.org/rec#School"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REGION"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Region"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REGION"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Region"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REGION"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Region"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#WHEEL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Wheel"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTION"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#Action"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Sensor"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Sensor"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LIQUID"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Liquid"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LIQUID"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Liquid"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LOCATION"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Location"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DEGREE"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/DEG"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PEAK"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Peak"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Tunnel"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Tunnel"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#NetworkSecurityPolicyCode"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#NetworkSecurityPolicy"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DEG"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/DEG"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#RAD"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/RAD_R"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ACTIVE"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Active"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SLAB"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Slab"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VISUAL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Visual"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#DELAY"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Delay"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#HOT"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Hot"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VIDEO"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Video"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#FINAL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Final"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Zone_of_fire"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Fire_Zone"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Action"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#Action"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Location"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Location"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Wall"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Wall"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Point_of_interest"/>
+        <entity2 rdf:resource="https://w3id.org/rec#PointOfInterest"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#REAL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Real"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Office"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Office"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Office"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Office"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#SMOKE"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Smoke"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#LOW"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Low"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Tank"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Tank"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#POINT"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Point"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#POINT"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Point"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#OIL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Oil"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#ADDRESS"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#Address"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BOX"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Box"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PERSON"/>
+        <entity2 rdf:resource="http://schema.org/Person"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#PERSON"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Person"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#COLD"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Cold"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#COIL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Coil"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#COIL"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Coil"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Air_compressor"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Compressor"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Building"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Building"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Building"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Building"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#BYPASS-1"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Bypass"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#MISCELLANEOUS-EQUIPMENT-TYPE-Tank"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/Brick#Tank"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#VEHICLE-TYPE-Maintenance"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#Maintenance"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#TEAM"/>
+        <entity2 rdf:resource="https://brickschema.org/schema/BrickTag#Team"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Lamp"/>
+        <entity2 rdf:resource="https://w3id.org/rec#Lamp"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#GUARAN"/>
+        <entity2 rdf:resource="http://qudt.org/vocab/unit/CCY_PYG"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://vistology.com/ont/2006/JC3IEDM3.0/JC3IEDM.owl#Maintenance"/>
+        <entity2 rdf:resource="http://data.ashrae.org/bacnet/2020#Maintenance"/>
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.000000</measure>
+      </Cell>
+    </map>
+  </Alignment>
+</rdf:RDF>

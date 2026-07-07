@@ -1,0 +1,516 @@
+{
+  "per_pair_best": {
+    "thinkhome-brick": {
+      "matcher": "AML",
+      "F1_Rplus": 0.7742,
+      "P": 0.8276,
+      "R": 0.7273
+    },
+    "brick-smartenv": {
+      "matcher": "LogMap",
+      "F1_Rplus": 0.8293,
+      "P": 0.7391,
+      "R": 0.9444
+    },
+    "city-brick": {
+      "matcher": "LogMap",
+      "F1_Rplus": 0.7568,
+      "P": 0.7778,
+      "R": 0.7368
+    },
+    "jc3iedm-mio": {
+      "matcher": "LogMapLLM",
+      "F1_Rplus": 0.928,
+      "P": 0.9957,
+      "R": 0.8689
+    },
+    "jc3iedm-brick": {
+      "matcher": "LogMapLt",
+      "F1_Rplus": 0.8188,
+      "P": 0.8243,
+      "R": 0.8133
+    },
+    "jc3iedm-facility": {
+      "matcher": "LogMap",
+      "F1_Rplus": 0.9767,
+      "P": 0.9767,
+      "R": 0.9767
+    }
+  },
+  "aggregate": [
+    {
+      "matcher": "ALOD2Vec",
+      "n_pairs": 2,
+      "micro_Rplus": {
+        "P": 0.9634,
+        "R": 0.2548,
+        "F1": 0.4031,
+        "TP": 79,
+        "judgeable": 82,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rplus": {
+        "P": 0.9641,
+        "R": 0.5089,
+        "F1": 0.5918,
+        "pairs": 2
+      },
+      "micro_Rapprox": {
+        "P": 0.9634,
+        "R": 0.2548,
+        "F1": 0.4031,
+        "TP": 79,
+        "judgeable": 82,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rapprox": {
+        "P": 0.9641,
+        "R": 0.5089,
+        "F1": 0.5918,
+        "pairs": 2
+      }
+    },
+    {
+      "matcher": "AML",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.8942,
+        "R": 0.3463,
+        "F1": 0.4993,
+        "TP": 169,
+        "judgeable": 189,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.8789,
+        "R": 0.5778,
+        "F1": 0.6436,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.9825,
+        "R": 0.3678,
+        "F1": 0.5352,
+        "TP": 224,
+        "judgeable": 228,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.9892,
+        "R": 0.5099,
+        "F1": 0.6346,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "ATMatcher",
+      "n_pairs": 2,
+      "micro_Rplus": {
+        "P": 0.9259,
+        "R": 0.2419,
+        "F1": 0.3836,
+        "TP": 75,
+        "judgeable": 81,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rplus": {
+        "P": 0.9278,
+        "R": 0.4234,
+        "F1": 0.537,
+        "pairs": 2
+      },
+      "micro_Rapprox": {
+        "P": 0.9259,
+        "R": 0.2419,
+        "F1": 0.3836,
+        "TP": 75,
+        "judgeable": 81,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rapprox": {
+        "P": 0.9278,
+        "R": 0.4234,
+        "F1": 0.537,
+        "pairs": 2
+      }
+    },
+    {
+      "matcher": "BertMap",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.9412,
+        "R": 0.1967,
+        "F1": 0.3254,
+        "TP": 96,
+        "judgeable": 102,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.9232,
+        "R": 0.3431,
+        "F1": 0.4631,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.9725,
+        "R": 0.1741,
+        "F1": 0.2953,
+        "TP": 106,
+        "judgeable": 109,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.9714,
+        "R": 0.259,
+        "F1": 0.3792,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "BertMapLt",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.906,
+        "R": 0.2172,
+        "F1": 0.3504,
+        "TP": 106,
+        "judgeable": 117,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.859,
+        "R": 0.3673,
+        "F1": 0.4748,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 1.0,
+        "R": 0.2282,
+        "F1": 0.3717,
+        "TP": 139,
+        "judgeable": 139,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 1.0,
+        "R": 0.3423,
+        "F1": 0.4793,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "CySecBertMap",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.9596,
+        "R": 0.1947,
+        "F1": 0.3237,
+        "TP": 95,
+        "judgeable": 99,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.9394,
+        "R": 0.3343,
+        "F1": 0.459,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.9906,
+        "R": 0.1724,
+        "F1": 0.2937,
+        "TP": 105,
+        "judgeable": 106,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.9912,
+        "R": 0.2563,
+        "F1": 0.3768,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "Fine-TOM",
+      "n_pairs": 2,
+      "micro_Rplus": {
+        "P": 0.625,
+        "R": 0.1613,
+        "F1": 0.2564,
+        "TP": 50,
+        "judgeable": 80,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rplus": {
+        "P": 0.6021,
+        "R": 0.201,
+        "F1": 0.2633,
+        "pairs": 2
+      },
+      "micro_Rapprox": {
+        "P": 0.625,
+        "R": 0.1613,
+        "F1": 0.2564,
+        "TP": 50,
+        "judgeable": 80,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rapprox": {
+        "P": 0.6021,
+        "R": 0.201,
+        "F1": 0.2633,
+        "pairs": 2
+      }
+    },
+    {
+      "matcher": "KGMatcher",
+      "n_pairs": 2,
+      "micro_Rplus": {
+        "P": 1.0,
+        "R": 0.0839,
+        "F1": 0.1548,
+        "TP": 26,
+        "judgeable": 26,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rplus": {
+        "P": 1.0,
+        "R": 0.1658,
+        "F1": 0.268,
+        "pairs": 2
+      },
+      "micro_Rapprox": {
+        "P": 1.0,
+        "R": 0.0839,
+        "F1": 0.1548,
+        "TP": 26,
+        "judgeable": 26,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rapprox": {
+        "P": 1.0,
+        "R": 0.1658,
+        "F1": 0.268,
+        "pairs": 2
+      }
+    },
+    {
+      "matcher": "LogMap",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.9571,
+        "R": 0.7766,
+        "F1": 0.8575,
+        "TP": 379,
+        "judgeable": 396,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.8963,
+        "R": 0.7708,
+        "F1": 0.8126,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.9737,
+        "R": 0.6683,
+        "F1": 0.7926,
+        "TP": 407,
+        "judgeable": 418,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.9498,
+        "R": 0.6202,
+        "F1": 0.7286,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "LogMapLLM",
+      "n_pairs": 2,
+      "micro_Rplus": {
+        "P": 0.9963,
+        "R": 0.8774,
+        "F1": 0.9331,
+        "TP": 272,
+        "judgeable": 273,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rplus": {
+        "P": 0.9979,
+        "R": 0.8996,
+        "F1": 0.946,
+        "pairs": 2
+      },
+      "micro_Rapprox": {
+        "P": 0.9963,
+        "R": 0.8774,
+        "F1": 0.9331,
+        "TP": 272,
+        "judgeable": 273,
+        "reference": 310,
+        "pairs": 2
+      },
+      "macro_Rapprox": {
+        "P": 0.9979,
+        "R": 0.8996,
+        "F1": 0.946,
+        "pairs": 2
+      }
+    },
+    {
+      "matcher": "LogMapLt",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.7782,
+        "R": 0.4242,
+        "F1": 0.5491,
+        "TP": 207,
+        "judgeable": 266,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.7895,
+        "R": 0.6507,
+        "F1": 0.6655,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.8518,
+        "R": 0.5189,
+        "F1": 0.6449,
+        "TP": 316,
+        "judgeable": 371,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.8828,
+        "R": 0.7049,
+        "F1": 0.74,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "Matcha",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.4407,
+        "R": 0.4877,
+        "F1": 0.463,
+        "TP": 238,
+        "judgeable": 540,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.5244,
+        "R": 0.6896,
+        "F1": 0.566,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.3885,
+        "R": 0.5747,
+        "F1": 0.4636,
+        "TP": 350,
+        "judgeable": 901,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.4694,
+        "R": 0.7637,
+        "F1": 0.5356,
+        "pairs": 6
+      }
+    },
+    {
+      "matcher": "SecureBertMap",
+      "n_pairs": 6,
+      "micro_Rplus": {
+        "P": 0.9612,
+        "R": 0.2029,
+        "F1": 0.335,
+        "TP": 99,
+        "judgeable": 103,
+        "reference": 488,
+        "pairs": 6
+      },
+      "macro_Rplus": {
+        "P": 0.9431,
+        "R": 0.3498,
+        "F1": 0.4686,
+        "pairs": 6
+      },
+      "micro_Rapprox": {
+        "P": 0.9909,
+        "R": 0.179,
+        "F1": 0.3032,
+        "TP": 109,
+        "judgeable": 110,
+        "reference": 609,
+        "pairs": 6
+      },
+      "macro_Rapprox": {
+        "P": 0.9949,
+        "R": 0.2718,
+        "F1": 0.3864,
+        "pairs": 6
+      }
+    }
+  ],
+  "reference_sizes": {
+    "thinkhome-brick": {
+      "Rapprox": 116,
+      "Rplus": 66,
+      "coherent": false
+    },
+    "brick-smartenv": {
+      "Rapprox": 47,
+      "Rplus": 18,
+      "coherent": false
+    },
+    "city-brick": {
+      "Rapprox": 61,
+      "Rplus": 19,
+      "coherent": false
+    },
+    "jc3iedm-mio": {
+      "Rapprox": 267,
+      "Rplus": 267,
+      "coherent": true
+    },
+    "jc3iedm-brick": {
+      "Rapprox": 75,
+      "Rplus": 75,
+      "coherent": true
+    },
+    "jc3iedm-facility": {
+      "Rapprox": 43,
+      "Rplus": 43,
+      "coherent": true
+    }
+  }
+}

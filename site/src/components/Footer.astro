@@ -1,0 +1,55 @@
+---
+import { withBase } from '../config';
+
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="container cols">
+    <div>
+      <h2>DISO-OAEI</h2>
+      <p>
+        An ontology-matching track over defence, intelligence, and security ontologies,
+        proposed for the <a href="https://oaei.ontologymatching.org/">Ontology Alignment Evaluation Initiative</a> 2026 campaign.
+      </p>
+      <ul>
+        <li><a href="https://github.com/city-artificial-intelligence/diso">DISO ontology collection</a></li>
+        <li><a href="https://github.com/city-artificial-intelligence/diso-mappings">Alignment methodology</a></li>
+        <li><a href="https://github.com/city-artificial-intelligence/diso-oaei">Track repository</a></li>
+        <li><a href={withBase('/changelog/')}>Dataset &amp; results changelog</a></li>
+        <li><a href={withBase('/LICENSE')}>Licence (Apache-2.0)</a></li>
+        <li><a href="mailto:contact@oaei-ml.org">contact@oaei-ml.org</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Privacy</h2>
+      <p>
+        This site is static and collects no personal data. There is no account system and no
+        form, so nothing you type is sent to us. We use no analytics, no cookies, and no
+        tracking of any kind — there is nothing to consent to.
+      </p>
+      <p>
+        The site is hosted on GitHub Pages; as the host, GitHub may process standard technical
+        request data such as visitors' IP addresses to serve and protect the site, as described
+        in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.
+      </p>
+    </div>
+    <div>
+      <h2>Accessibility</h2>
+      <p>
+        We aim to meet WCAG&nbsp;2.2 level AA in both the light and dark themes.
+        Read the full <a href={withBase('/accessibility/')}>accessibility statement</a>.
+      </p>
+      <h2>Acknowledgements</h2>
+      <p>
+        Supported by Turing Innovations Limited and
+        <a href="https://www.turing.ac.uk/science-innovation/defence-and-national-security">The Alan Turing Institute's Defence and Security Programme</a>
+        via project <a href="https://ernestojimenezruiz.github.io/projects/guard/">GUARD</a>.
+      </p>
+    </div>
+  </div>
+  <div class="container bottom">
+    <span>© {year} DISO-OAEI</span>
+    <span>Static site · No cookies · No tracking</span>
+  </div>
+</footer>
