@@ -475,7 +475,7 @@ main .btn-ghost:hover { border-color: var(--ink-3); color: var(--ink); backgroun
   background: var(--bg);
 }
 .timeline .done .dot { border-color: var(--ok); background: var(--ok-soft); }
-.timeline .live .dot { border-color: var(--warn-ink); background: var(--warn-soft); }
+.timeline .live .dot { border-color: var(--ok); background: var(--ok-soft); }
 .timeline .date {
   font-family: var(--font-mono);
   font-size: 0.82rem;
