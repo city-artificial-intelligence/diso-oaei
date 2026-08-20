@@ -97,6 +97,9 @@ There is no local scorer for Task 2 (the answer keys are private). A full walkth
 
 Supported by Turing Innovations Limited and [The Alan Turing Institute's Defence and Security Programme](https://www.turing.ac.uk/science-innovation/defence-and-national-security) via the project [GUARD](https://ernestojimenezruiz.github.io/projects/guard/).
 
+## Citation
+
+> Jon Dilworth, Pedro Cotovio, David Herron, Paul Cripps, Nigel Dewdney, Catia Pesquita, and Ernesto Jiménez-Ruiz. Improving Interoperability among Defence and National Security Ontologies: Analysis and Evaluation Tasks. In 25th International Semantic Web Conference (ISWC 2026), 2026 <https://arxiv.org/abs/2608.05867>
 
 ## References
 
