@@ -87,7 +87,9 @@ _Note that all dates are considered 00:00 Anywhere on Earth (AoE)._
 
 ## Citation
 
-A Zenodo DOI for the DISO-OAEI track dataset is **pending** and will be published here once minted. Until then, cite the underlying collection:
+A Zenodo DOI for the DISO-OAEI track dataset is **pending** and will be published here once minted. Until then, cite the underlying collection and paper:
+
+> Jon Dilworth, Pedro Cotovio, David Herron, Paul Cripps, Nigel Dewdney, Catia Pesquita, and Ernesto Jiménez-Ruiz. Improving Interoperability among Defence and National Security Ontologies: Analysis and Evaluation Tasks. In 25th International Semantic Web Conference (ISWC 2026), 2026 <https://arxiv.org/abs/2608.05867>
 
 > Dilworth, J., Cotovio, P., Herron, D., Pesquita, C., Jimenez-Ruiz, E., Cripps, P., & Dewdney, N. (2026). DISO: Defence, Intelligence and Security Ontologies (1.1.0) [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.20059506>
 
