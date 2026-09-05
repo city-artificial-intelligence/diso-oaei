@@ -62,9 +62,11 @@ Full spec + worked example: [`tasks/ranking/submission-format.md`](tasks/ranking
 
 ## 4. Submit
 
-The evaluation window runs from 12 July to 1 September 2026, 00:00 Anywhere on Earth (AoE). 
+The evaluation window runs from 12 July to 30 September 2026, 00:00 Anywhere on Earth (AoE).
 
 Submit via CodaBench: [Task 1 — Global Alignment](https://www.codabench.org/competitions/17405/) · [Task 2 — Local Equivalence Ranking](https://www.codabench.org/competitions/17406/). 
+
+**Before you submit:** as with every OAEI track, your system must be registered with the [OAEI 2026 campaign](https://oaei.ontologymatching.org/2026/) via its [registration form](https://docs.google.com/forms/d/e/1FAIpQLSdGMuD_-kWhCYQIK5amsCvMDmYICViUJEci-M1CySoMaJ0wqA/viewform); a CodaBench account alone is not OAEI registration.
 
 Register, then upload one zip per task as described on each competition's Overview page.
 
