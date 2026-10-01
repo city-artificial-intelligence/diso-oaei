@@ -2,7 +2,7 @@
 
 All notable changes to the DISO-OAEI datasets, baselines, and published results are recorded here, per edition. Dataset archives are identified by their SHA-256 checksums (see the [downloads table](./index.md#downloads)); each edition's machine-readable results snapshot is archived under `results/<year>/`.
 
-## 2026 edition (first edition)
+## 2026 edition (first edition) 
 
 ### 2026-07-06 — Finalised datasets published
 
